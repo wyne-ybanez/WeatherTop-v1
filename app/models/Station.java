@@ -9,14 +9,15 @@ import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
 
-public class Station {
+@Entity
+public class Station extends Model {
     public String stationName;
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Reading> readings = new ArrayList<Reading>();
     public String weather;
     public double temperature;
     public double wind;
     public int pressure;
-    @OneToMany(cascade = CascadeType.ALL)
-    public List<Reading> readings = new ArrayList<Reading>();
 
     public Station(String stationName, String weather, double temperature, double wind, int pressure)
     {

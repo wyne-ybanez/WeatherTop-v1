@@ -14,7 +14,7 @@ Reading(r3):
   code: 700
   temperature: 8.0
   windSpeed: 1
-  pressure: 1000
+  pressure: 1002
 
 Reading(r4):
   code: 200
@@ -23,13 +23,13 @@ Reading(r4):
   pressure: 999
 
 Station(station1):
-  name: Tramore
+  stationName: Tramore
   readings:
     - r1
     - r2
 
 Station(station2):
-  name: Dunmore
+  stationName: Dunmore
   readings:
     - r3
     - r4
