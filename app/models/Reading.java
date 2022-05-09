@@ -1,14 +1,21 @@
 package models;
 
-public class Reading
+import javax.persistence.Entity;
+
+import play.db.jpa.Model;
+
+@Entity
+public class Reading extends Model
 {
     public int code;
-    public double temp;
+    public double temperature;
     public double windSpeed;
+    public int pressure;
 
-    public Reading(int code, double temp, double windSpeed){
+    public Reading(int code, double temperature, double windSpeed, int pressure){
         this.code = code;
-        this.temp = temp;
+        this.temperature = temperature;
         this.windSpeed = windSpeed;
+        this.pressure = pressure;
     }
 }

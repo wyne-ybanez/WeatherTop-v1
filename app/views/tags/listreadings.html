@@ -4,6 +4,7 @@
     <th>Code</th>
     <th>Temp</th>
     <th>Wind Speed</th>
+    <th>Pressure</th>
   </tr>
   </thead>
   <tbody>
@@ -13,10 +14,13 @@
       ${reading.code}
     </td>
     <td>
-      ${reading.temp}
+      ${reading.temperature}
     </td>
     <td>
       ${reading.windSpeed}
+    </td>
+    <td>
+      ${reading.pressure}
     </td>
   </tr>
   #{/list}

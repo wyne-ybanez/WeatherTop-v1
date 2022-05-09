@@ -3,9 +3,12 @@
 
 #{menu id:"dashboard"/}
 
-<section class="ui segment">
-  <h2 class="ui header">
-    ${station.stationName}
-  </h2>
-  #{listreadings station:station/}
-</section>
+#{list items:stations, as:'station'}
+  <section class="ui segment">
+    <h2 class="ui header">
+      ${station.stationName}
+    </h2>
+    <!-- Displays readings for each station -->
+    #{listreadings station:station/}
+  </section>
+#{/list}
