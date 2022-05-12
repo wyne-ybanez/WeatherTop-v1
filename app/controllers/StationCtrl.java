@@ -18,7 +18,7 @@ public class StationCtrl extends Controller
     }
 
     /**
-    *  Delete Station from database
+    *  Delete reading from database
     */
     public static void deleteReading(long id, long readingid)
     {
@@ -31,5 +31,17 @@ public class StationCtrl extends Controller
         station.save();
         reading.delete();
         render("station.html", station);
+    }
+
+    /**
+     *  Add Station to database
+     */
+    public static void addReading(long id, int code, double temperature, double windSpeed, int pressure)
+    {
+        Reading reading = new Reading(code, temperature, windSpeed, pressure);
+        Station station = Station.findById(id);
+        station.readings.add(reading);
+        station.save();
+        redirect("/stations/" + id);
     }
 }
