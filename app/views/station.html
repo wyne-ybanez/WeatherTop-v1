@@ -1,0 +1,102 @@
+#{extends 'main.html' /}
+#{set title:'Station' /}
+
+#{menu id:"dashboard"/}
+
+<section class="ui segment">
+    <h2 class="ui header">
+        ${station.stationName}
+    </h2>
+    <table>
+        <tbody>
+            <div class="ui five column grid">
+
+                <div class="column">
+                    <div class="ui fluid inverted card">
+                        <div class="middle aligned content">
+                          <h3 class="ui header" style="padding-top: 2.5rem;">
+                            ${station.stationName}
+                          </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="ui fluid inverted card">
+                        <div class="middle aligned content">
+                          <h3 class="ui header" style="padding-top: 2.5rem;">
+                            Weather
+                          </h3>
+                          <p class="description">
+                            ${station.weather}
+                          </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="ui fluid inverted card">
+                        <div class="middle aligned content">
+                          <h3 class="ui header" style="padding-top: 2.5rem;">
+                            Temperature
+                          </h3>
+                          <p class="description">
+                            ${station.temperature}
+                          </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="ui fluid inverted card">
+                        <div class="middle aligned content">
+                          <h3 class="ui header" style="padding-top: 2.5rem;">
+                            Wind
+                          </h3>
+                          <p class="description">
+                            ${station.wind}
+                          </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="ui fluid inverted card">
+                        <div class="middle aligned content">
+                          <h3 class="ui header" style="padding-top: 2.5rem;">
+                            Pressure
+                          </h3>
+                          <p class="description">
+                            ${station.pressure}
+                          </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        #{list items:stations, as:'station'}
+        <tr>
+            <td>
+                ${station.weather}
+            </td>
+            <td>
+                ${station.temperature}
+            </td>
+            <td>
+                ${station.temperature}
+            </td>
+            <td>
+                ${station.wind}
+            </td>
+            <td>
+                ${station.pressure}
+            </td>
+        </tr>
+        #{/list}
+
+        <!-- Displays readings for each station -->
+        #{listreadings station:station/}
+        </tbody>
+    </table>
+</section>
