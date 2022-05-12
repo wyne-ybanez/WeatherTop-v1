@@ -20,8 +20,12 @@ public class StationCtrl extends Controller
     {
         Station station = Station.findById(id);
         Reading reading = Reading.findById(readingid);
+
         Logger.info("Removing reading code: " + reading.code);
 
+        station.readings.remove(reading);
+        station.save();
+        reading.delete();
         render("station.html", station);
     }
 }
