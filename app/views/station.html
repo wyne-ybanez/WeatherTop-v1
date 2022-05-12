@@ -67,7 +67,7 @@
                             Pressure
                           </h3>
                           <p class="description">
-                            ${station.readings.pressure[0]}
+                            ${station.readings.pressure[0]} hpa
                           </p>
                         </div>
                     </div>
@@ -75,28 +75,29 @@
 
             </div>
 
-        #{list items:stations, as:'station'}
-        <tr>
-            <td>
-                ${station.weather}
-            </td>
-            <td>
-                ${station.temperature}
-            </td>
-            <td>
-                ${station.temperature}
-            </td>
-            <td>
-                ${station.wind}
-            </td>
-            <td>
-                ${station.pressure}
-            </td>
-        </tr>
-        #{/list}
+            #{list items:stations, as:'station'}
+            <tr>
+                <td>
+                    ${station.weather}
+                </td>
+                <td>
+                    ${station.temperature}
+                </td>
+                <td>
+                    ${station.temperature}
+                </td>
+                <td>
+                    ${station.wind}
+                </td>
+                <td>
+                    ${station.pressure}
+                </td>
+            </tr>
+            #{/list}
 
-        <!-- Displays readings for each station -->
-        #{listreadings station:station/}
+            <!-- Displays readings for each station -->
+            #{listreadings station:station/}
+
         </tbody>
     </table>
 </section>

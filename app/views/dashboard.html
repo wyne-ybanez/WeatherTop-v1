@@ -3,11 +3,39 @@
 
 #{menu id:"dashboard"/}
 
-#{list items:stations, as:'station'}
   <section class="ui segment">
-    <h2 class="ui header">
-      ${station.stationName}
-    </h2>
-    <a href="/stations/${station.id}"> View </a>
+
+    #{list items:stations, as:'station'}
+    <div class="ui stacked segment">
+      <h2 class="ui header">
+        ${station.stationName}
+      </h2>
+      <a href="/stations/${station.id}" class="ui icon button">
+        <i class="icon folder open"></i>
+      </a>
+      <a href="/dashboard/deleteStation/${station.id}" class="ui icon button">
+        <i class="icon trash"></i>
+      </a>
+    </div>
+    #{/list}
+
+    <!-- Add a station form -->
+    <form class="ui segment form" action="/dashboard/addStation" method="POST">
+      <div class="three fields">
+        <div class="field">
+          <label>Name</label>
+          <input placeholder="Station Title" type="text" name="stationName">
+        </div>
+        <div class="field">
+          <label>Latitude</label>
+          <input placeholder="0.0" type="text" placeholder="latitude">
+        </div>
+        <div class="field">
+          <label>Longitude</label>
+          <input placeholder="0.0" type="text" placeholder="longitude">
+        </div>
+      </div>
+      <button class="ui blue submit button">Add Station</button>
+    </form>
+
   </section>
-#{/list}

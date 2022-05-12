@@ -7,7 +7,9 @@ import play.mvc.Controller;
 
 public class StationCtrl extends Controller
 {
-    //  Find Station by ID
+    /**
+     *  Find a station by ID
+     */
     public static void index(long id)
     {
         Station station = Station.findById(id);
@@ -15,7 +17,9 @@ public class StationCtrl extends Controller
         render("station.html", station);
     }
 
-    // Delete a station
+    /**
+    *  Delete Station from database
+    */
     public static void deleteReading(long id, long readingid)
     {
         Station station = Station.findById(id);
