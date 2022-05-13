@@ -5,11 +5,17 @@ import models.Reading;
 import java.util.List;
 import play.Logger;
 
+/**
+ *  Convert temp, wind and pressure.
+ *  Undergoes conversions and returns converted values.
+ *  Import to StationCtrl.
+ */
 public class ReadingAnalytics {
+
     /**
-     *  Convert temp, wind and pressure.
-     *  Undergoes conversions and returns converted values.
-     *  Import to StationCtrl.
+     *  Converts reading code to a specified weather value.
+     *
+     *  @return weather value as a String
      */
     public static String convertCodeToWeather(int weatherCode) {
         String weather = "";
@@ -48,5 +54,19 @@ public class ReadingAnalytics {
             return weather;
         }
         return weather;
+    }
+
+    /**
+     *  Converts Celcius to Farenheit
+     *
+     *  @return double value for Farenheit
+     */
+    public static double convertToFahrenheit(double tempInCelcius)
+    {
+        double fahrenheitValue = 0.0;
+
+        // Formula for converting celcius to fahrenheit = ( X * 1.8 ) + 32
+        fahrenheitValue = (tempInCelcius * 1.8) + 32;
+        return fahrenheitValue;
     }
 }
