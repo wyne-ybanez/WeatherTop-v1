@@ -6,14 +6,16 @@ import models.Reading;
 import play.Logger;
 import play.mvc.Controller;
 
-import utils.ReadingAnalytics;
+import utils.Conversions;
 
 public class StationCtrl extends Controller
 {
     /**
-     *  Find a station by ID.
-     *  Weather Code conversion value displays in the view for each station.
-     *  Temperature conversion.
+     *  Find a station by ID and obtain the latest Reading.
+     *
+     *  1. Weather Code conversion value displays in the view for each station.
+     *  2. Temperature Celcius to Fahrenheit conversion.
+     *  3. Wind Speed to Beaufort conversion.
      */
     public static void index(long id)
     {
@@ -23,14 +25,18 @@ public class StationCtrl extends Controller
         Reading lastReading = station.readings.get( station.readings.size() - 1 );
 
         // Set latest weather to the converted value of the latest reading
-        station.latestWeather = ReadingAnalytics.convertCodeToWeather(lastReading.code);
+        station.latestWeather = Conversions.convertCodeToWeather(lastReading.code);
 
         // Set latest weather temperature to the converted Fahrenheit value
-        station.temperature = ReadingAnalytics.convertToFahrenheit(lastReading.temperature);
+        station.temperature = Conversions.convertToFahrenheit(lastReading.temperature);
         double stationFahrenheitValue = station.temperature;
 
+        // Set latest weather wind speed to the converted Beaufort value
+        station.wind = Conversions.convertToBeaufort(lastReading.windSpeed);
+        int stationBeaufortValue = station.wind;
+
         Logger.info("Weather Station Id = " + id);
-        render("station.html", station, stationFahrenheitValue);
+        render("station.html", station, stationFahrenheitValue, stationBeaufortValue);
     }
 
     /**
@@ -40,10 +46,8 @@ public class StationCtrl extends Controller
     {
         Station station = Station.findById(id);
         Reading reading = Reading.findById(readingid);
-
-        Logger.info("Removing reading code: " + reading.code);
-
         station.readings.remove(reading);
+        Logger.info("Removing reading code: " + reading.code);
         station.save();
         reading.delete();
         render("station.html", station);
@@ -52,9 +56,9 @@ public class StationCtrl extends Controller
     /**
      *  Add Station to database
      */
-    public static void addReading(long id, int code, double temperature, double windSpeed, int pressure)
+    public static void addReading(long id, int code, double temperature, double windSpeed, int windDirection, int pressure)
     {
-        Reading reading = new Reading(code, temperature, windSpeed, pressure);
+        Reading reading = new Reading(code, temperature, windSpeed, windDirection, pressure);
         Station station = Station.findById(id);
         station.readings.add(reading);
         station.save();
