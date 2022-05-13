@@ -28,7 +28,7 @@
                             Weather
                           </h3>
                           <p class="description">
-                            ${station.readings.code[0]}
+                            ${station.latestWeather}
                           </p>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                             Temperature
                           </h3>
                           <p class="description">
-                            ${station.readings.temperature[0]}
+                            ${station.readings.temperature[-1]}
                           </p>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                             Wind
                           </h3>
                           <p class="description">
-                            ${station.readings.windSpeed[0]}
+                            ${station.readings.windSpeed[-1]}
                           </p>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                             Pressure
                           </h3>
                           <p class="description">
-                            ${station.readings.pressure[0]} hpa
+                            ${station.readings.pressure[-1]} hpa
                           </p>
                         </div>
                     </div>
