@@ -142,7 +142,7 @@ public class Conversions {
      */
     public static String convertToCompassDirection(double windDirection)
     {
-        String compassDirection = "";
+        String compassDirection;
 
         if ((windDirection > 348.75) && (windDirection < 11.25)) {
             compassDirection = "North";
@@ -205,13 +205,11 @@ public class Conversions {
      *
      *  @return String value for wind chill.
      */
-    public static String windChillCalculator(double windSpeed, double temperature)
+    public static double windChillCalculator(double windSpeed, double temperature)
     {
         double exponent = 0.16;
         double windChillValue = 13.12 + (0.6215 * temperature) - (11.37 * Math.pow(windSpeed, exponent)) + 0.3965 * (temperature) * (Math.pow(windSpeed, exponent));
-
-        String windChillCaption = "Feels like " + (Math.round(windChillValue * 100.0) / 100);
-
-        return windChillCaption;
+        double windChillValueRounded = (Math.round(windChillValue * 100.0) / 100.0);
+        return windChillValueRounded;
     }
 }

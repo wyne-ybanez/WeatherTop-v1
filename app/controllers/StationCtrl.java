@@ -66,7 +66,7 @@ public class StationCtrl extends Controller
     }
 
     /**
-     *  Add Station to database
+     *  Add Reading to database
      */
     public static void addReading(long id, int code, double temperature, double windSpeed, int windDirection, int pressure)
     {

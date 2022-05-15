@@ -13,19 +13,26 @@
 
                 <div class="column">
                     <div class="ui fluid inverted card">
-                        <div class="middle aligned content" style="max-height: 11rem; min-height:11rem;">
-                          <h3 class="ui header" style="padding-top: 2.5rem";>
+                        <div class="middle aligned content station-card-height">
+                          <h3 class="ui header top-medium-padding">
                             ${station.stationName}
+                              <i class="marker icon"></i>
                           </h3>
+                          <p class="description">
+                            Lat: ${station.latitude}
+                            <br>
+                            Lng: ${station.longitude}
+                          </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="column">
                     <div class="ui fluid inverted card">
-                        <div class="middle aligned content" style="max-height: 11rem; min-height:11rem;">
-                          <h3 class="ui header" style="padding-top: 2.5rem";>
+                        <div class="middle aligned content station-card-height">
+                          <h3 class="ui header top-medium-padding">
                             Weather
+                              <i class="cloud rain icon"></i>
                           </h3>
                           <p class="description">
                             ${station.latestWeather}
@@ -36,9 +43,10 @@
 
                 <div class="column">
                     <div class="ui fluid inverted card">
-                        <div class="middle aligned content" style="max-height: 11rem; min-height:11rem;">
-                          <h3 class="ui header" style="padding-top: 2.5rem";>
-                            Temperature
+                        <div class="middle aligned content station-card-height">
+                          <h3 class="ui header top-medium-padding">
+                            Temp
+                              <i class="temperature low icon"></i>
                           </h3>
                             <p class="description">
                                 ${station.readings.temperature[-1]} C
@@ -52,18 +60,17 @@
 
                 <div class="column">
                     <div class="ui fluid inverted card">
-                        <div class="middle aligned content" style="max-height: 11rem; min-height:11rem;">
-                          <h3 class="ui header" style="padding-top: 2.5rem";>
+                        <div class="middle aligned content station-card-height">
+                          <h3 class="ui header top-medium-padding">
                             Wind
+                              <i class="wind icon"></i>
                           </h3>
                           <p class="description">
                             ${stationBeaufortValue} bft
                           </p>
                           <p class="description">
                             ${station.windCompass}
-                          </p>
-                          <p class="description">
-                            ${station.windChill}
+                              <br>Feels like ${station.windChill}
                           </p>
                         </div>
                     </div>
@@ -71,9 +78,10 @@
 
                 <div class="column">
                     <div class="ui fluid inverted card">
-                        <div class="middle aligned content" style="max-height: 11rem; min-height:11rem;">
-                          <h3 class="ui header" style="padding-top: 2.5rem";>
+                        <div class="middle aligned content station-card-height">
+                          <h3 class="ui header top-medium-padding">
                             Pressure
+                              <i class="cloud sun icon"></i>
                           </h3>
                           <p class="description">
                             ${station.pressure} hpa

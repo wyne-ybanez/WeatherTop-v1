@@ -1,0 +1,36 @@
+.top-medium-padding {
+    padding-top: 2.5rem !important;
+}
+
+.top-small-padding {
+    padding-top: 1rem !important;
+}
+
+.station-card-height {
+    min-height: 13rem;
+    max-height: 13rem;
+}
+
+.ui.header>i.icon {
+    font-size: 4rem;
+    color: blueviolet;
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
+}
+
+.ui.header>i.icon.cloud.rain {
+    color: red !important;
+}
+
+.ui.header>i.icon.temperature.low {
+    color: dodgerblue !important;
+}
+
+.ui.header>i.icon.wind {
+    color: forestgreen !important;
+}
+
+.ui.header>i.icon.cloud.sun {
+    color: orange !important;
+}

@@ -1,4 +1,4 @@
-<form class="ui segment form" action="/station/${_station.id}/addReading" method="POST">
+<form class="ui segment form" action="/stations/${_station.id}/addReading" method="POST">
   <div class="three fields">
     <div class="field">
       <label>Code</label>
@@ -10,13 +10,13 @@
     </div>
     <div class="field">
       <label>Wind Speed</label>
-      <input placeholder="0.0" type="number" step=".02" name="windSpeed">
+      <input placeholder="0.0" type="number" step=".01" name="windSpeed">
     </div>
   </div>
   <div class="three fields">
     <div class="field">
       <label>Wind Direction</label>
-      <input placeholder="000deg" type="number" step="0.2" name="windDirection">
+      <input placeholder="000deg" type="number" step=".01" name="windDirection">
     </div>
     <div class="field">
       <label>Pressure</label>

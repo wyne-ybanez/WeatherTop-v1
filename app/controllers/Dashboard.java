@@ -21,9 +21,9 @@ public class Dashboard extends Controller
   /**
    * Add Station to database
    */
-  public static void addStation(String stationName)
+  public static void addStation(String stationName, double latitude, double longitude)
   {
-    Station station = new Station(stationName);
+    Station station = new Station(stationName, latitude, longitude);
     station.save();
     Logger.info("Adding Station" + stationName);
     redirect("/dashboard");

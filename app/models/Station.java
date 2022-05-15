@@ -18,12 +18,16 @@ public class Station extends Model {
     public String latestWeather;
     public double temperature;
     public int wind;
-    public String windChill;
+    public double windChill;
     public String windCompass;
     public int pressure;
+    public double latitude;
+    public double longitude;
 
-    public Station(String stationName)
+    public Station(String stationName, double latitude, double longitude)
     {
         this.stationName = stationName;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }
