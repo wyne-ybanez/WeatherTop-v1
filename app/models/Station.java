@@ -18,6 +18,8 @@ public class Station extends Model {
     public String latestWeather;
     public double temperature;
     public int wind;
+    public String windChill;
+    public String windCompass;
     public int pressure;
 
     public Station(String stationName)

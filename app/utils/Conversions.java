@@ -2,6 +2,8 @@ package utils;
 
 import play.Logger;
 
+import java.lang.Math;
+
 /**
  *  Convert temp, wind and pressure.
  *  Undergoes conversions and returns converted values.
@@ -130,5 +132,86 @@ public class Conversions {
             Logger.error("Invalid code input");
         }
     return BeaufortValue;
+    }
+
+    /**
+     *  Wind Direction compass.
+     *  Converts wind degree range to compass direction.
+     *
+     *  @return String value for the Compass direction.
+     */
+    public static String convertToCompassDirection(double windDirection)
+    {
+        String compassDirection = "";
+
+        if ((windDirection > 348.75) && (windDirection < 11.25)) {
+            compassDirection = "North";
+        }
+        else if ((windDirection > 11.25) && (windDirection < 33.75)) {
+            compassDirection = "North East";
+        }
+        else if ((windDirection > 33.75) && (windDirection < 56.25)) {
+            compassDirection = "North North East";
+        }
+        else if ((windDirection > 56.25) && (windDirection < 78.75)) {
+            compassDirection = "East North East";
+        }
+        else if ((windDirection > 78.75) && (windDirection < 101.25)) {
+            compassDirection = "East";
+        }
+        else if ((windDirection > 101.25) && (windDirection < 123.75)) {
+            compassDirection = "East South East";
+        }
+        else if ((windDirection > 123.75) && (windDirection < 146.25)) {
+            compassDirection = "South East";
+        }
+        else if ((windDirection > 146.25) && (windDirection < 168.75)) {
+            compassDirection = "South South East";
+        }
+        else if ((windDirection > 168.75) && (windDirection < 191.25)) {
+            compassDirection = "South";
+        }
+        else if ((windDirection > 191.25) && (windDirection < 213.75)) {
+            compassDirection = "South South West";
+        }
+        else if ((windDirection > 213.75) && (windDirection < 236.25)) {
+            compassDirection = "South West";
+        }
+        else if ((windDirection > 236.25) && (windDirection < 258.75)) {
+            compassDirection = "West South West";
+        }
+        else if ((windDirection > 258.75) && (windDirection < 281.25)) {
+            compassDirection = "West";
+        }
+        else if ((windDirection > 281.25) && (windDirection < 303.75)) {
+            compassDirection = "West North West";
+        }
+        else if ((windDirection > 303.75) && (windDirection < 326.25)) {
+            compassDirection = "North West";
+        }
+        else if ((windDirection > 326.25) && (windDirection < 348.75)) {
+            compassDirection = "North North West";
+        }
+        // Default value is North
+        else {
+            compassDirection = "North";
+        }
+        return compassDirection;
+    }
+
+    /**
+     *  Wind Chill Calculator.
+     *  Takes wind direction value from reading.
+     *
+     *  @return String value for wind chill.
+     */
+    public static String windChillCalculator(double windSpeed, double temperature)
+    {
+        double exponent = 0.16;
+        double windChillValue = 13.12 + (0.6215 * temperature) - (11.37 * Math.pow(windSpeed, exponent)) + 0.3965 * (temperature) * (Math.pow(windSpeed, exponent));
+
+        String windChillCaption = "Feels like " + (Math.round(windChillValue * 100.0) / 100);
+
+        return windChillCaption;
     }
 }

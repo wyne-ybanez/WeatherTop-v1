@@ -16,24 +16,36 @@ public class StationCtrl extends Controller
      *  1. Weather Code conversion value displays in the view for each station.
      *  2. Temperature Celcius to Fahrenheit conversion.
      *  3. Wind Speed to Beaufort conversion.
+     *  4. Pressure is as declared by latest reading.
+     *  5. Wind compass direction.
+     *  6. Wind chill calculation.
      */
     public static void index(long id)
     {
         Station station = Station.findById(id);
 
         // Get the latest reading
-        Reading lastReading = station.readings.get( station.readings.size() - 1 );
+        Reading latestReading = station.readings.get( station.readings.size() - 1 );
 
-        // Set latest weather to the converted value of the latest reading
-        station.latestWeather = Conversions.convertCodeToWeather(lastReading.code);
+        //1. Set latest weather to the converted value of the latest reading
+        station.latestWeather = Conversions.convertCodeToWeather(latestReading.code);
 
-        // Set latest weather temperature to the converted Fahrenheit value
-        station.temperature = Conversions.convertToFahrenheit(lastReading.temperature);
+        //2. Set latest weather temperature to the converted Fahrenheit value
+        station.temperature = Conversions.convertToFahrenheit(latestReading.temperature);
         double stationFahrenheitValue = station.temperature;
 
-        // Set latest weather wind speed to the converted Beaufort value
-        station.wind = Conversions.convertToBeaufort(lastReading.windSpeed);
+        //3. Set latest weather wind speed to the converted Beaufort value
+        station.wind = Conversions.convertToBeaufort(latestReading.windSpeed);
         int stationBeaufortValue = station.wind;
+
+        //4. Set latest pressure reading
+        station.pressure = latestReading.pressure;
+
+        //5. Set wind compass conversion value
+        station.windCompass = Conversions.convertToCompassDirection(latestReading.windDirection);
+
+        //6. Set wind chill value
+        station.windChill = Conversions.windChillCalculator(latestReading.windSpeed, latestReading.temperature);
 
         Logger.info("Weather Station Id = " + id);
         render("station.html", station, stationFahrenheitValue, stationBeaufortValue);
