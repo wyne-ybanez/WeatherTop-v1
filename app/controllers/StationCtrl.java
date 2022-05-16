@@ -7,6 +7,7 @@ import play.Logger;
 import play.mvc.Controller;
 
 import utils.Conversions;
+import utils.StationAnalytics;
 
 public class StationCtrl extends Controller
 {
@@ -41,45 +42,13 @@ public class StationCtrl extends Controller
         int stationBeaufortValue = station.wind;
 
         // Analytics: Max & Min Values (Temperature, Wind, Pressure)
-        Reading maxTempReading = null;
-        Reading minTempReading = null;
-        Reading maxWindReading = null;
-        Reading minWindReading = null;
-        Reading maxPressureReading = null;
-        Reading minPressureReading = null;
+        Reading maxTempReading = StationAnalytics.getMaxTemperature(station.readings);
+        Reading minTempReading = StationAnalytics.getMinTemperature(station.readings);
+        Reading maxWindReading = StationAnalytics.getMaxWindSpeed(station.readings);
+        Reading minWindReading = StationAnalytics.getMinWindSpeed(station.readings);
+        Reading maxPressureReading = StationAnalytics.getMaxPressure(station.readings);
+        Reading minPressureReading = StationAnalytics.getMinPressure(station.readings);
 
-        if (station.readings.size() > 0) {
-            minTempReading = station.readings.get(0);
-            maxTempReading = station.readings.get(0);
-            minWindReading = station.readings.get(0);
-            maxWindReading = station.readings.get(0);
-            minPressureReading = station.readings.get(0);
-            maxPressureReading = station.readings.get(0);
-
-            for (Reading reading : station.readings) {
-                // Temperature
-                if (reading.temperature < minTempReading.temperature) {
-                    minTempReading = reading;
-                }
-                if (reading.temperature > maxTempReading.temperature){
-                    maxTempReading = reading;
-                }
-                // Wind
-                if (reading.windSpeed < minWindReading.windSpeed){
-                    minWindReading = reading;
-                }
-                if (reading.windSpeed > maxWindReading.windSpeed){
-                    maxWindReading = reading;
-                }
-                // Pressure
-                if (reading.pressure < minPressureReading.pressure){
-                    minPressureReading = reading;
-                }
-                if (reading.pressure > maxPressureReading.pressure){
-                    maxPressureReading = reading;
-                }
-            }
-        }
         Logger.info("Weather Station Id = " + id
                 + "\n\n Min temp value: " + minTempReading.temperature
                 + "\n Max temp value: " + maxTempReading.temperature
