@@ -34,6 +34,12 @@ public class Station extends Model {
     public double maxWindSpeed;
     public int maxPressure;
 
+    /**
+     * Constructor
+     * @param stationName
+     * @param latitude
+     * @param longitude
+     */
     public Station(String stationName, double latitude, double longitude)
     {
         this.stationName = stationName;

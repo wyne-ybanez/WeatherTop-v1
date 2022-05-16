@@ -4,39 +4,122 @@
 #{menu id: "admin"/}
 
 <section>
-    <h2 class="ui header">
-        All readings in the database:
+    <!--  Stations  -->
+    <h2 class="ui header top-small-padding">
+        Stations:
     </h2>
     <table class="ui celled table">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Code</th>
-                <th>Temperature</th>
-                <th>Wind Speed</th>
-                <th>Pressure</th>
+                <th>Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Weather Code</th>
+                <th>Temperature (°C)</th>
+                <th>Wind Speed (KM/hr)</th>
+                <th>Pressure (hpa)</th>
             </tr>
         </thead>
         <tbody>
-            #{list items:readings, as:'reading'}
+            #{list items:stations, as:'station'}
                 <tr>
                     <td>
-                        ${reading.id}
+                        ${station.id}
                     </td>
                     <td>
-                        ${reading.code}
+                        ${station.stationName}
                     </td>
                     <td>
-                        ${reading.temperature}
+                        ${station.latitude}
                     </td>
                     <td>
-                        ${reading.windSpeed}
+                        ${station.longitude}
                     </td>
                     <td>
-                        ${reading.pressure}
+                        ${station.readings.code[-1]}
+                    </td>
+                    <td>
+                        ${station.readings.temperature[-1]}
+                    </td>
+                    <td>
+                        ${station.readings.windSpeed[-1]}
+                    </td>
+                    <td>
+                        ${station.readings.pressure[-1]}
                     </td>
                 </tr>
             #{/list}
+        </tbody>
+    </table>
+
+    <!-- Readings -->
+    <h2 class="ui header top-small-padding">
+        Readings:
+    </h2>
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Temperature</th>
+            <th>Wind Speed</th>
+            <th>Pressure</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list items:readings, as:'reading'}
+        <tr>
+            <td>
+                ${reading.id}
+            </td>
+            <td>
+                ${reading.code}
+            </td>
+            <td>
+                ${reading.temperature}
+            </td>
+            <td>
+                ${reading.windSpeed}
+            </td>
+            <td>
+                ${reading.pressure}
+            </td>
+        </tr>
+        #{/list}
+        </tbody>
+    </table>
+
+    <!--  Members  -->
+    <h2 class="ui header top-small-padding">
+        Members:
+    </h2>
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list items:readings, as:'reading'}
+        <tr>
+            <td>
+                ${reading.id}
+            </td>
+            <td>
+                ${reading.code}
+            </td>
+            <td>
+                ${reading.temperature}
+            </td>
+            <td>
+                ${reading.windSpeed}
+            </td>
+        </tr>
+        #{/list}
         </tbody>
     </table>
 </section>

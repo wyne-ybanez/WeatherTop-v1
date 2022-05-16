@@ -3,7 +3,6 @@ package models;
 import javax.persistence.Entity;
 
 import play.db.jpa.Model;
-import play.Logger;
 
 @Entity
 public class Reading extends Model

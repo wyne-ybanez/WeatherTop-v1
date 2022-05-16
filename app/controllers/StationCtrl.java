@@ -13,14 +13,18 @@ public class StationCtrl extends Controller
 {
     /**
      *  Find a station by ID and obtain the latest Readings.
+     *  Index contains the following:
      *
      *  1. Weather Code conversion value displays in the view for each station.
-     *  2. Temperature Celcius to Fahrenheit conversion.
-     *  3. Wind Speed to Beaufort conversion.
-     *  4. Pressure is as declared by latest reading.
+     *  2. Temperature Celcius to Fahrenheit conversion value.
+     *  3. Wind Speed to Beaufort conversion value.
+     *  4. Pressure as declared by latest reading.
      *  5. Wind compass direction.
-     *  6. Wind chill calculation.
+     *  6. Wind chill.
      *  7. Max & Min values (Temp, Wind, Pressure).
+     *
+     * @param id
+     * @return The index will pass variables to/and render the view.
      */
     public static void index(long id)
     {

@@ -22,7 +22,7 @@ Reading(r4):
   windSpeed: 3.5
   pressure: 999
 
-Station(station1):
+Station(s1):
   stationName: Tramore
   latitude: 52.160
   longitude: -7.152
@@ -30,10 +30,19 @@ Station(station1):
     - r1
     - r2
 
-Station(station2):
+Station(s2):
   stationName: Dunmore
   latitude: 52.149
   longitude: -6.994
   readings:
     - r3
     - r4
+
+Member(m1):
+  email: homer@simpson.com
+  password: secret
+  firstName: Homer
+  lastName: Simpson
+  stations:
+    - s1
+    - s2
