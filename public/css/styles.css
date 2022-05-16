@@ -6,9 +6,17 @@
     padding-top: 1rem !important;
 }
 
+.bottom-small-padding {
+    padding-bottom: 1rem !important;
+}
+
+.bottom-medium-padding {
+    padding-bottom: 2.5rem !important;
+}
+
 .station-card-height {
-    min-height: 13rem;
-    max-height: 13rem;
+    min-height: 14.5rem;
+    max-height: 14.5rem;
 }
 
 .ui.header>i.icon {

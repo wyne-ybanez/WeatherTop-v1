@@ -50,9 +50,12 @@
                           </h3>
                             <p class="description">
                                 ${station.readings.temperature[-1]} C
-                            </p>
-                            <p class="description">
+                                <br>
                                 ${stationFahrenheitValue} F
+                                <br>
+                                Max: ${maxTempReading.temperature}
+                                <br>
+                                Min: ${minTempReading.temperature}
                             </p>
                         </div>
                     </div>
@@ -66,11 +69,15 @@
                               <i class="wind icon"></i>
                           </h3>
                           <p class="description">
-                            ${stationBeaufortValue} bft
-                          </p>
-                          <p class="description">
-                            ${station.windCompass}
-                              <br>Feels like ${station.windChill}
+                              ${stationBeaufortValue} bft
+                              <br>
+                              ${station.windCompass}
+                              <br>
+                              Feels like ${station.windChill}
+                              <br>
+                              Max: ${maxWindReading.windSpeed}
+                              <br>
+                              Min: ${minWindReading.windSpeed}
                           </p>
                         </div>
                     </div>
@@ -85,6 +92,10 @@
                           </h3>
                           <p class="description">
                             ${station.pressure} hpa
+                              <br>
+                              Max: ${maxPressureReading.pressure}
+                              <br>
+                              Min: ${minPressureReading.pressure}
                           </p>
                         </div>
                     </div>

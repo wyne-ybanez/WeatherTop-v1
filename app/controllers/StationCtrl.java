@@ -11,7 +11,7 @@ import utils.Conversions;
 public class StationCtrl extends Controller
 {
     /**
-     *  Find a station by ID and obtain the latest Reading.
+     *  Find a station by ID and obtain the latest Readings.
      *
      *  1. Weather Code conversion value displays in the view for each station.
      *  2. Temperature Celcius to Fahrenheit conversion.
@@ -19,6 +19,7 @@ public class StationCtrl extends Controller
      *  4. Pressure is as declared by latest reading.
      *  5. Wind compass direction.
      *  6. Wind chill calculation.
+     *  7. Max & Min values (Temp, Wind, Pressure).
      */
     public static void index(long id)
     {
@@ -27,28 +28,69 @@ public class StationCtrl extends Controller
         // Get the latest reading
         Reading latestReading = station.readings.get( station.readings.size() - 1 );
 
-        //1. Set latest weather to the converted value of the latest reading
+        // Conversions
         station.latestWeather = Conversions.convertCodeToWeather(latestReading.code);
-
-        //2. Set latest weather temperature to the converted Fahrenheit value
         station.temperature = Conversions.convertToFahrenheit(latestReading.temperature);
-        double stationFahrenheitValue = station.temperature;
-
-        //3. Set latest weather wind speed to the converted Beaufort value
         station.wind = Conversions.convertToBeaufort(latestReading.windSpeed);
-        int stationBeaufortValue = station.wind;
-
-        //4. Set latest pressure reading
         station.pressure = latestReading.pressure;
-
-        //5. Set wind compass conversion value
         station.windCompass = Conversions.convertToCompassDirection(latestReading.windDirection);
-
-        //6. Set wind chill value
         station.windChill = Conversions.windChillCalculator(latestReading.windSpeed, latestReading.temperature);
 
-        Logger.info("Weather Station Id = " + id);
-        render("station.html", station, stationFahrenheitValue, stationBeaufortValue);
+        // Variables
+        double stationFahrenheitValue = station.temperature;
+        int stationBeaufortValue = station.wind;
+
+        // Analytics: Max & Min Values (Temperature, Wind, Pressure)
+        Reading maxTempReading = null;
+        Reading minTempReading = null;
+        Reading maxWindReading = null;
+        Reading minWindReading = null;
+        Reading maxPressureReading = null;
+        Reading minPressureReading = null;
+
+        if (station.readings.size() > 0) {
+            minTempReading = station.readings.get(0);
+            maxTempReading = station.readings.get(0);
+            minWindReading = station.readings.get(0);
+            maxWindReading = station.readings.get(0);
+            minPressureReading = station.readings.get(0);
+            maxPressureReading = station.readings.get(0);
+
+            for (Reading reading : station.readings) {
+                // Temperature
+                if (reading.temperature < minTempReading.temperature) {
+                    minTempReading = reading;
+                }
+                if (reading.temperature > maxTempReading.temperature){
+                    maxTempReading = reading;
+                }
+                // Wind
+                if (reading.windSpeed < minWindReading.windSpeed){
+                    minWindReading = reading;
+                }
+                if (reading.windSpeed > maxWindReading.windSpeed){
+                    maxWindReading = reading;
+                }
+                // Pressure
+                if (reading.pressure < minPressureReading.pressure){
+                    minPressureReading = reading;
+                }
+                if (reading.pressure > maxPressureReading.pressure){
+                    maxPressureReading = reading;
+                }
+            }
+        }
+        Logger.info("Weather Station Id = " + id
+                + "\n\n Min temp value: " + minTempReading.temperature
+                + "\n Max temp value: " + maxTempReading.temperature
+                + "\n\n Min windSpeed value: " + minWindReading.windSpeed
+                + "\n Max windSpeed value: " + maxWindReading.windSpeed
+                + "\n\n Min pressure value: " + minPressureReading.pressure
+                + "\n Max pressure value: " + maxPressureReading.pressure
+        );
+        render("station.html", station, stationFahrenheitValue, stationBeaufortValue,
+                    minTempReading, maxTempReading, minWindReading, maxWindReading,
+                    minPressureReading, maxPressureReading);
     }
 
     /**
