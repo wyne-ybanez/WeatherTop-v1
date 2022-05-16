@@ -24,6 +24,16 @@ public class Station extends Model {
     public double latitude;
     public double longitude;
 
+    // Min Reading variables
+    public double minTemperature;
+    public double minWindSpeed;
+    public int minPressure;
+
+    // Max Reading variables
+    public double maxTemperature;
+    public double maxWindSpeed;
+    public int maxPressure;
+
     public Station(String stationName, double latitude, double longitude)
     {
         this.stationName = stationName;

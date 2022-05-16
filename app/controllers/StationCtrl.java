@@ -42,24 +42,22 @@ public class StationCtrl extends Controller
         int stationBeaufortValue = station.wind;
 
         // Analytics: Max & Min Values (Temperature, Wind, Pressure)
-        Reading maxTempReading = StationAnalytics.getMaxTemperature(station.readings);
-        Reading minTempReading = StationAnalytics.getMinTemperature(station.readings);
-        Reading maxWindReading = StationAnalytics.getMaxWindSpeed(station.readings);
-        Reading minWindReading = StationAnalytics.getMinWindSpeed(station.readings);
-        Reading maxPressureReading = StationAnalytics.getMaxPressure(station.readings);
-        Reading minPressureReading = StationAnalytics.getMinPressure(station.readings);
+        station.maxTemperature = StationAnalytics.getMaxTemperature(station.readings).temperature;
+        station.minTemperature = StationAnalytics.getMinTemperature(station.readings).temperature;
+        station.maxWindSpeed = StationAnalytics.getMaxWindSpeed(station.readings).windSpeed;
+        station.minWindSpeed = StationAnalytics.getMinWindSpeed(station.readings).windSpeed;
+        station.maxPressure = StationAnalytics.getMaxPressure(station.readings).pressure;
+        station.minPressure = StationAnalytics.getMinPressure(station.readings).pressure;
 
         Logger.info("Weather Station Id = " + id
-                + "\n\n Min temp value: " + minTempReading.temperature
-                + "\n Max temp value: " + maxTempReading.temperature
-                + "\n\n Min windSpeed value: " + minWindReading.windSpeed
-                + "\n Max windSpeed value: " + maxWindReading.windSpeed
-                + "\n\n Min pressure value: " + minPressureReading.pressure
-                + "\n Max pressure value: " + maxPressureReading.pressure
+                + "\n\n Max temp value: " + station.maxTemperature
+                + "\n Min temp value: " + station.minTemperature
+                + "\n\n Max windSpeed value: " + station.maxWindSpeed
+                + "\n Min windSpeed value: " + station.minWindSpeed
+                + "\n\n Max pressure value: " + station.maxPressure
+                + "\n Min pressure value: " + station.minPressure
         );
-        render("station.html", station, stationFahrenheitValue, stationBeaufortValue,
-                    minTempReading, maxTempReading, minWindReading, maxWindReading,
-                    minPressureReading, maxPressureReading);
+        render("station.html", station, stationFahrenheitValue, stationBeaufortValue);
     }
 
     /**
