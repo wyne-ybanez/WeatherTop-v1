@@ -14,6 +14,7 @@ GET     /signup                                  Accounts.signup
 GET     /login                                   Accounts.login
 POST    /dashboard/addStation                    Dashboard.addStation
 POST    /stations/{id}/addReading                StationCtrl.addReading
+POST    /register                                Accounts.register
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -2,11 +2,8 @@ package controllers;
 
 import java.util.List;
 
-import models.Reading;
-import models.Station;
+import models.*;
 import play.mvc.Controller;
-
-import utils.Conversions;
 
 public class Admin extends Controller
 {
@@ -14,6 +11,7 @@ public class Admin extends Controller
     {
         List<Reading> readings = Reading.findAll();
         List<Station> stations = Station.findAll();
-        render("admin.html", readings, stations);
+        List<Member> members = Member.findAll();
+        render("admin.html", readings, stations, members);
     }
 }
