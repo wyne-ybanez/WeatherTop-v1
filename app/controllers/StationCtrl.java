@@ -26,32 +26,37 @@ public class StationCtrl extends Controller
      * @param id
      * @return The index will pass variables to/and render the view.
      */
-    public static void index(long id)
-    {
+    public static void index(long id) {
+        double stationFahrenheitValue = 0.0;
+        int stationBeaufortValue = 0;
+        Reading latestReading;
+
         Station station = Station.findById(id);
 
-        // Get the latest reading
-        Reading latestReading = station.readings.get( station.readings.size() - 1 );
+        if (station.readings.size() > 0) {
+            // Get the latest reading
+            latestReading = station.readings.get(station.readings.size() - 1);
 
-        // Conversions
-        station.latestWeather = Conversions.convertCodeToWeather(latestReading.code);
-        station.temperature = Conversions.convertToFahrenheit(latestReading.temperature);
-        station.wind = Conversions.convertToBeaufort(latestReading.windSpeed);
-        station.pressure = latestReading.pressure;
-        station.windCompass = Conversions.convertToCompassDirection(latestReading.windDirection);
-        station.windChill = Conversions.windChillCalculator(latestReading.windSpeed, latestReading.temperature);
+            // Station Conversions
+            station.latestWeather = Conversions.convertCodeToWeather(latestReading.code);
+            station.temperature = latestReading.temperature;
+            station.wind = Conversions.convertToBeaufort(latestReading.windSpeed);
+            station.pressure = latestReading.pressure;
+            station.windCompass = Conversions.convertToCompassDirection(latestReading.windDirection);
+            station.windChill = Conversions.windChillCalculator(latestReading.windSpeed, latestReading.temperature);
 
-        // Variables
-        double stationFahrenheitValue = station.temperature;
-        int stationBeaufortValue = station.wind;
+            // Variables
+            stationFahrenheitValue = Conversions.convertToFahrenheit(latestReading.temperature);
+            stationBeaufortValue = station.wind;
 
-        // Analytics: Max & Min Values (Temperature, Wind, Pressure)
-        station.maxTemperature = StationAnalytics.getMaxTemperature(station.readings).temperature;
-        station.minTemperature = StationAnalytics.getMinTemperature(station.readings).temperature;
-        station.maxWindSpeed = StationAnalytics.getMaxWindSpeed(station.readings).windSpeed;
-        station.minWindSpeed = StationAnalytics.getMinWindSpeed(station.readings).windSpeed;
-        station.maxPressure = StationAnalytics.getMaxPressure(station.readings).pressure;
-        station.minPressure = StationAnalytics.getMinPressure(station.readings).pressure;
+            // Analytics: Max & Min Values (Temperature, Wind, Pressure)
+            station.maxTemperature = StationAnalytics.getMaxTemperature(station.readings).temperature;
+            station.minTemperature = StationAnalytics.getMinTemperature(station.readings).temperature;
+            station.maxWindSpeed = StationAnalytics.getMaxWindSpeed(station.readings).windSpeed;
+            station.minWindSpeed = StationAnalytics.getMinWindSpeed(station.readings).windSpeed;
+            station.maxPressure = StationAnalytics.getMaxPressure(station.readings).pressure;
+            station.minPressure = StationAnalytics.getMinPressure(station.readings).pressure;
+        }
 
         Logger.info("Weather Station Id = " + id
                 + "\n\n Max temp value: " + station.maxTemperature

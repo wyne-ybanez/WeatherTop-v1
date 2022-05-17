@@ -25,7 +25,9 @@ public class Dashboard extends Controller
   {
     Station station = new Station(stationName, latitude, longitude);
     station.save();
-    Logger.info("Adding Station" + stationName);
+    Logger.info("Adding Station: " + stationName
+                + "\n Latitude: " + latitude
+                + "\n Longitude: " + longitude);
     redirect("/dashboard");
   }
 
@@ -35,7 +37,7 @@ public class Dashboard extends Controller
   public static void deleteStation (long id)
   {
     Station station = Station.findById(id);
-    Logger.info ("Removing" + station.stationName);
+    Logger.info ("Removing: " + station.stationName);
     station.delete();
     redirect ("/dashboard");
   }

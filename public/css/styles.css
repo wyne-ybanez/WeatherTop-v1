@@ -6,6 +6,18 @@
     padding-top: 1rem !important;
 }
 
+.left-small-padding {
+    padding-left: 1rem !important;
+}
+
+.left-medium-padding {
+    padding-left: 2.5rem !important;
+}
+
+.left-large-padding {
+    padding-left: 5rem !important;
+}
+
 .bottom-small-padding {
     padding-bottom: 1rem !important;
 }
