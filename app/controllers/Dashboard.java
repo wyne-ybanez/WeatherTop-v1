@@ -3,8 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Station;
-import models.Reading;
+import models.*;
 import play.Logger;
 import play.mvc.Controller;
 
@@ -13,9 +12,9 @@ public class Dashboard extends Controller
   public static void index()
   {
     Logger.info("Rendering Dashboard");
-
-    List<Station> stations = Station.findAll();
-    render ("dashboard.html", stations);
+    Member member = Accounts.getLoggedInMember();
+    List<Station> stations = member.stations;
+    render ("dashboard.html", stations, member);
   }
 
   /**
@@ -23,8 +22,11 @@ public class Dashboard extends Controller
    */
   public static void addStation(String stationName, double latitude, double longitude)
   {
+    Member member = Accounts.getLoggedInMember();
     Station station = new Station(stationName, latitude, longitude);
-    station.save();
+    // station.save();
+    member.stations.add(station);
+    member.save();
     Logger.info("Adding Station: " + stationName
                 + "\n Latitude: " + latitude
                 + "\n Longitude: " + longitude);

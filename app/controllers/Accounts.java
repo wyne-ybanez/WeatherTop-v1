@@ -51,4 +51,23 @@ public class Accounts extends Controller
             redirect("/login");
         }
     }
+
+    /**
+     * Checks to see if a user has logged in.
+     * User identified through memberid. If there is no memberid, the user is redirected to login page.
+     *
+     * @return member
+     */
+    public static Member getLoggedInMember()
+    {
+        Member member = null;
+        if (session.contains("logged_in_Memberid")) {
+            String memberid = session.get("logged_in_Memberid");
+            member = Member.findById(Long.parseLong(memberid));
+        }
+        else {
+            login();
+        }
+        return member;
+    }
 }
