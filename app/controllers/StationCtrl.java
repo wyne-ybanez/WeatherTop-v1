@@ -77,7 +77,7 @@ public class StationCtrl extends Controller
         Station station = Station.findById(id);
         Reading reading = Reading.findById(readingid);
         station.readings.remove(reading);
-        Logger.info("Removing reading code: " + reading.code);
+        Logger.info("Removing reading: " + reading.id);
         station.save();
         reading.delete();
         render("station.html", station);
@@ -92,6 +92,7 @@ public class StationCtrl extends Controller
         Station station = Station.findById(id);
         station.readings.add(reading);
         station.save();
+        Logger.info("Adding new reading " + reading.id + " to station: " + station.stationName);
         redirect("/stations/" + id);
     }
 }
