@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.List;
-
 import models.*;
 import play.mvc.Controller;
 import play.Logger;

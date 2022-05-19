@@ -77,7 +77,7 @@ public class StationCtrl extends Controller
         Station station = Station.findById(id);
         Reading reading = Reading.findById(readingid);
         station.readings.remove(reading);
-        Logger.info("Removing reading: " + reading.id);
+        Logger.info("Removing reading: " + readingid);
         station.save();
         reading.delete();
         render("station.html", station);
@@ -86,7 +86,7 @@ public class StationCtrl extends Controller
     /**
      *  Add Reading to database
      */
-    public static void addReading(long id, int code, double temperature, double windSpeed, int windDirection, int pressure)
+    public static void addReading(long id, int code, double temperature, double windSpeed, double windDirection, int pressure)
     {
         Reading reading = new Reading(code, temperature, windSpeed, windDirection, pressure);
         Station station = Station.findById(id);

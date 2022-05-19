@@ -2,18 +2,26 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET     /about                                    About.index
+# Start
+GET     /                                         Start.index
+
+# Admin
 GET     /admin                                    Admin.index
+
+# Accounts
 GET     /signup                                   Accounts.signup
 GET     /login                                    Accounts.login
 GET     /logout                                   Accounts.logout
 POST    /register                                 Accounts.register
 POST    /authenticate                             Accounts.authenticate
+
+# Dashboard
+GET     /about                                    About.index
 GET     /dashboard                                Dashboard.index
 GET     /dashboard/{id}/deleteStation/{stationid} Dashboard.deleteStation
 POST    /dashboard/addStation                     Dashboard.addStation
-GET     /                                         Start.index
+
+# Station Control
 GET     /stations/{id}                            StationCtrl.index
 GET     /stations/{id}/deleteReading/{readingid}  StationCtrl.deleteReading
 POST    /stations/{id}/addReading                 StationCtrl.addReading

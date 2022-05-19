@@ -37,42 +37,50 @@
                         ${station.longitude}
                     </td>
                     <td>
-                        #{if (station.readings.code[-1] == 100) }
-                            Clear
+                        #{if (station.readings.code) }
+                            #{if (station.readings.code[-1] == 100) }
+                                Clear
+                            #{/if}
+                            #{elseif (station.readings.code[-1] == 200)}
+                                Partial Clouds
+                            #{/elseif}
+                            #{elseif (station.readings.code[-1] == 300)}
+                                Cloudy
+                            #{/elseif}
+                            #{elseif (station.readings.code[-1] == 400)}
+                                Light Showers
+                            #{/elseif}
+                            #{elseif (station.readings.code[-1] == 500)}
+                                Heavy Showers
+                            #{/elseif}
+                            #{elseif (station.readings.code[-1] == 600)}
+                                Rain
+                            #{/elseif}
+                            #{elseif (station.readings.code[-1] == 700)}
+                                Snow
+                            #{/elseif}
+                            #{elseif (station.readings.code[-1] == 800)}
+                                Thunder
+                            #{/elseif}
+                            #{else}
+                                Unknown
+                            #{/else}
                         #{/if}
-                        #{elseif (station.readings.code[-1] == 200)}
-                            Partial Clouds
-                        #{/elseif}
-                        #{elseif (station.readings.code[-1] == 300)}
-                            Cloudy
-                        #{/elseif}
-                        #{elseif (station.readings.code[-1] == 400)}
-                            Light Showers
-                        #{/elseif}
-                        #{elseif (station.readings.code[-1] == 500)}
-                            Heavy Showers
-                        #{/elseif}
-                        #{elseif (station.readings.code[-1] == 600)}
-                            Rain
-                        #{/elseif}
-                        #{elseif (station.readings.code[-1] == 700)}
-                            Snow
-                        #{/elseif}
-                        #{elseif (station.readings.code[-1] == 800)}
-                            Thunder
-                        #{/elseif}
-                        #{else}
-                            ${station.readings.code[-1]}
-                        #{/else}
                     </td>
                     <td>
-                        ${station.readings.temperature[-1]}
+                        #{if (station.readings.temperature) }
+                            ${station.readings.temperature[-1]}
+                        #{/if}
                     </td>
                     <td>
-                        ${station.readings.windSpeed[-1]}
+                        #{if (station.readings.windSpeed) }
+                            ${station.readings.windSpeed[-1]}
+                        #{/if}
                     </td>
                     <td>
-                        ${station.readings.pressure[-1]}
+                        #{if (station.readings.pressure) }
+                            ${station.readings.pressure[-1]}
+                        #{/if}
                     </td>
                 </tr>
             #{/list}
@@ -90,6 +98,7 @@
             <th>Code</th>
             <th>Temperature</th>
             <th>Wind Speed</th>
+            <th>Wind Direction</th>
             <th>Pressure</th>
         </tr>
         </thead>
@@ -107,6 +116,9 @@
             </td>
             <td>
                 ${reading.windSpeed}
+            </td>
+            <td>
+                ${reading.windDirection}
             </td>
             <td>
                 ${reading.pressure}

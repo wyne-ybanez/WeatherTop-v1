@@ -1,8 +1,6 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import models.*;
 import play.Logger;
 import play.mvc.Controller;
@@ -46,12 +44,11 @@ public class Dashboard extends Controller
    * Remove the station from the member's station list and delete it.
    *
    * @param id
-   * @param stationid
    */
-  public static void deleteStation (long id, Long stationid)
+  public static void deleteStation (long id)
   {
-    Member member = Member.findById(id);
-    Station station = Station.findById(stationid);
+    Member member = Accounts.getLoggedInMember();
+    Station station = Station.findById(id);
     member.stations.remove(station);
     member.save();
     station.delete();
