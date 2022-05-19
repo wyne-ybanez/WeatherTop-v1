@@ -3,6 +3,7 @@ package utils;
 import play.Logger;
 
 import java.lang.Math;
+import java.util.HashMap;
 
 /**
  *  Convert temp, wind and pressure.
@@ -74,60 +75,59 @@ public class Conversions {
      */
     public static int convertToBeaufort(double windSpeed)
     {
-        int BeaufortValue = 0;
-        String BeaufortLabel = "";
+        int BeaufortValue;
+        HashMap<Integer, String> BeaufortLabel = new HashMap<Integer, String>();
 
         if (windSpeed == 1.0) {
             BeaufortValue = 0;
-            BeaufortLabel = "Calm";
+            BeaufortLabel.put(BeaufortValue, "Calm");
         }
         else if ((windSpeed > 1.0) && (windSpeed <= 5.0)) {
             BeaufortValue = 1;
-            BeaufortLabel = "Light Air";
+            BeaufortLabel.put(BeaufortValue,"Light Air");
         }
         else if ((windSpeed >= 6.0) && (windSpeed <= 11.0)) {
             BeaufortValue = 2;
-            BeaufortLabel = "Light Breeze";
+            BeaufortLabel.put(BeaufortValue,"Light Breeze");
         }
         else if ((windSpeed >= 12.0) && (windSpeed <= 19.0)) {
             BeaufortValue = 3;
-            BeaufortLabel = "Gentle Breeze";
+            BeaufortLabel.put(BeaufortValue,"Gentle Breeze");
         }
         else if ((windSpeed >= 20.0) && (windSpeed <= 28.0)) {
             BeaufortValue = 4;
-            BeaufortLabel = "Moderate Breeze";
+            BeaufortLabel.put(BeaufortValue,"Moderate Breeze");
         }
         else if ((windSpeed >= 29.0) && (windSpeed <= 38.0)) {
             BeaufortValue = 5;
-            BeaufortLabel = "Fresh Breeze";
+            BeaufortLabel.put(BeaufortValue,"Fresh Breeze");
         }
         else if ((windSpeed >= 39.0) && (windSpeed <= 49.0)) {
             BeaufortValue = 6;
-            BeaufortLabel = "Strong Breeze";
+            BeaufortLabel.put(BeaufortValue,"Strong Breeze");
         }
         else if ((windSpeed >= 50.0) && (windSpeed <= 61.0)) {
             BeaufortValue = 7;
-            BeaufortLabel = "Near Gale";
+            BeaufortLabel.put(BeaufortValue,"Near Gale");
         }
         else if ((windSpeed >= 62.0) && (windSpeed <= 74.0)) {
             BeaufortValue = 8;
-            BeaufortLabel = "Gale";
+            BeaufortLabel.put(BeaufortValue,"Gale");
         }
         else if ((windSpeed >= 75.0) && (windSpeed <= 88.0)) {
             BeaufortValue = 9;
-            BeaufortLabel = "Severe Gale";
+            BeaufortLabel.put(BeaufortValue,"Severe Gale");
         }
         else if ((windSpeed >= 89.0) && (windSpeed <= 102.0)) {
             BeaufortValue = 10;
-            BeaufortLabel = "Strong Storm";
+            BeaufortLabel.put(BeaufortValue,"Strong Storm");
         }
         else if ((windSpeed >= 103) && (windSpeed <= 117)) {
             BeaufortValue = 11;
-            BeaufortLabel = "Violent Storm";
+            BeaufortLabel.put(BeaufortValue,"Violent Storm");
         }
         else {
             BeaufortValue = 0;
-            BeaufortLabel = "";
             System.out.println("Invalid code input.");
             Logger.error("Invalid code input");
         }
