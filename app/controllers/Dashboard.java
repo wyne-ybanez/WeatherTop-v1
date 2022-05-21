@@ -1,9 +1,13 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import models.*;
 import play.Logger;
 import play.mvc.Controller;
+
+import static utils.Conversions.processConversions;
+import static utils.StationAnalytics.processAnalytics;
 
 public class Dashboard extends Controller
 {
@@ -12,6 +16,11 @@ public class Dashboard extends Controller
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
     List<Station> stations = member.stations;
+
+    for(Station station:stations) {
+      processConversions(station);
+      processAnalytics(station);
+    }
     render ("dashboard.html", stations, member);
   }
 
@@ -52,7 +61,7 @@ public class Dashboard extends Controller
     member.stations.remove(station);
     member.save();
     station.delete();
-    Logger.info ("Removing: " + station.stationName);
+    Logger.info ("Removing station");
     redirect ("/dashboard");
   }
 }

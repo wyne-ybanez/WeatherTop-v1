@@ -9,6 +9,7 @@
     </h2>
     <table>
         <tbody>
+            <!--  Latest Data  -->
             <div class="ui five column grid">
 
                 <div class="column">
@@ -51,7 +52,7 @@
                             <p class="description">
                                 ${station.temperature} °C
                                 <br>
-                                ${stationFahrenheitValue} F
+                                ${station.fahrenheitTemp} F
                                 <br>
                                 Max: ${station.maxTemperature}
                                 <br>
@@ -69,7 +70,7 @@
                               <i class="wind icon"></i>
                           </h3>
                           <p class="description">
-                              ${stationBeaufortValue} bft
+                              ${station.wind} bft
                               <br>
                               ${station.windCompass}
                               <br>
@@ -102,26 +103,6 @@
                 </div>
 
             </div>
-
-            #{list items:stations, as:'station'}
-            <tr>
-                <td>
-                    ${station.weather}
-                </td>
-                <td>
-                    ${station.temperature}
-                </td>
-                <td>
-                    ${station.temperature}
-                </td>
-                <td>
-                    ${station.wind}
-                </td>
-                <td>
-                    ${station.pressure}
-                </td>
-            </tr>
-            #{/list}
 
             <!-- Displays readings for each station -->
             #{listreadings station:station/}

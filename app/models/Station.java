@@ -17,6 +17,7 @@ public class Station extends Model {
 
     public String latestWeather;
     public double temperature;
+    public double fahrenheitTemp;
     public int wind;
     public double windChill;
     public String windCompass;

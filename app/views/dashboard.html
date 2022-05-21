@@ -5,17 +5,112 @@
 
   <!--  User first name & last name  -->
   <header class="ui header">
-    ${member.firstname} ${member.lastname}'s Stations
+      ${member.firstname} ${member.lastname}'s Stations
   </header>
 
-  <section class="ui segment">
-
+  <section>
     <!--  List of stations  -->
     #{list items:stations, as:'station'}
     <div class="ui stacked segment">
       <h2 class="ui header">
         ${station.stationName}
       </h2>
+
+      <!--  Trends and Latest Data  -->
+      <div class="ui five column grid">
+
+        <div class="column">
+          <div class="ui fluid inverted card">
+            <div class="middle aligned content station-card-height">
+              <h3 class="ui header top-medium-padding">
+                ${station.stationName}
+                <i class="marker icon"></i>
+              </h3>
+              <p class="description">
+                Lat: ${station.latitude}
+                <br>
+                Lng: ${station.longitude}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid inverted card">
+            <div class="middle aligned content station-card-height">
+              <h3 class="ui header top-medium-padding">
+                Weather
+                <i class="cloud rain icon"></i>
+              </h3>
+              <p class="description">
+                ${station.latestWeather}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid inverted card">
+            <div class="middle aligned content station-card-height">
+              <h3 class="ui header top-medium-padding">
+                Temp
+                <i class="temperature low icon"></i>
+              </h3>
+              <p class="description">
+                ${station.temperature} °C
+                <br>
+                ${station.fahrenheitTemp} F
+                <br>
+                Max: ${station.maxTemperature}
+                <br>
+                Min: ${station.minTemperature}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid inverted card">
+            <div class="middle aligned content station-card-height">
+              <h3 class="ui header top-medium-padding">
+                Wind
+                <i class="wind icon"></i>
+              </h3>
+              <p class="description">
+                ${station.wind} bft
+                <br>
+                ${station.windCompass}
+                <br>
+                Feels like ${station.windChill}
+                <br>
+                Max: ${station.maxWindSpeed}
+                <br>
+                Min: ${station.minWindSpeed}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="ui fluid inverted card">
+            <div class="middle aligned content station-card-height">
+              <h3 class="ui header top-medium-padding">
+                Pressure
+                <i class="cloud sun icon"></i>
+              </h3>
+              <p class="description">
+                ${station.pressure} hpa
+                <br>
+                Max: ${station.maxPressure}
+                <br>
+                Min: ${station.minPressure}
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
       <!--  explore station  -->
       <a href="/stations/${station.id}" class="ui icon button">
         <i class="icon folder open"></i>
@@ -28,22 +123,5 @@
     #{/list}
 
     <!-- Add a station form -->
-    <form class="ui segment form" action="/dashboard/addStation" method="POST">
-      <div class="three fields">
-        <div class="field">
-          <label>Name</label>
-          <input placeholder="Station Title" type="text" name="stationName">
-        </div>
-        <div class="field">
-          <label>Latitude</label>
-          <input placeholder="0.0" type="number" step=".01" placeholder="latitude" name="latitude">
-        </div>
-        <div class="field">
-          <label>Longitude</label>
-          <input placeholder="0.0" type="number" step=".01" placeholder="longitude" name="longitude">
-        </div>
-      </div>
-      <button class="ui blue submit button">Add Station</button>
-    </form>
-
+    #{addstation/}
   </section>

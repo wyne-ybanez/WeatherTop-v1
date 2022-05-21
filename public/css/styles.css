@@ -54,3 +54,7 @@
 .ui.header>i.icon.cloud.sun {
     color: orange !important;
 }
+
+.ui.inverted.card, .ui.inverted.cards>.card {
+    margin-bottom: 1.5rem;
+}

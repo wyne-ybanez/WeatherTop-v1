@@ -8,6 +8,8 @@ import play.mvc.Controller;
 
 import utils.Conversions;
 import utils.StationAnalytics;
+import static utils.Conversions.processConversions;
+import static utils.StationAnalytics.processAnalytics;
 
 public class StationCtrl extends Controller
 {
@@ -27,36 +29,10 @@ public class StationCtrl extends Controller
      * @return The index will pass variables to/and render the view.
      */
     public static void index(long id) {
-        double stationFahrenheitValue = 0.0;
-        int stationBeaufortValue = 0;
         Reading latestReading;
-
         Station station = Station.findById(id);
-
-        if (station.readings.size() > 0) {
-            // Get the latest reading
-            latestReading = station.readings.get(station.readings.size() - 1);
-
-            // Station Conversions
-            station.latestWeather = Conversions.convertCodeToWeather(latestReading.code);
-            station.temperature = latestReading.temperature;
-            station.wind = Conversions.convertToBeaufort(latestReading.windSpeed);
-            station.pressure = latestReading.pressure;
-            station.windCompass = Conversions.convertToCompassDirection(latestReading.windDirection);
-            station.windChill = Conversions.windChillCalculator(latestReading.windSpeed, latestReading.temperature);
-
-            // Variables
-            stationFahrenheitValue = Conversions.convertToFahrenheit(latestReading.temperature);
-            stationBeaufortValue = station.wind;
-
-            // Analytics: Max & Min Values (Temperature, Wind, Pressure)
-            station.maxTemperature = StationAnalytics.getMaxTemperature(station.readings).temperature;
-            station.minTemperature = StationAnalytics.getMinTemperature(station.readings).temperature;
-            station.maxWindSpeed = StationAnalytics.getMaxWindSpeed(station.readings).windSpeed;
-            station.minWindSpeed = StationAnalytics.getMinWindSpeed(station.readings).windSpeed;
-            station.maxPressure = StationAnalytics.getMaxPressure(station.readings).pressure;
-            station.minPressure = StationAnalytics.getMinPressure(station.readings).pressure;
-        }
+        processConversions(station);
+        processAnalytics(station);
 
         Logger.info("Weather Station Id = " + id
                 + "\n\n Max temp value: " + station.maxTemperature
@@ -66,7 +42,7 @@ public class StationCtrl extends Controller
                 + "\n\n Max pressure value: " + station.maxPressure
                 + "\n Min pressure value: " + station.minPressure
         );
-        render("station.html", station, stationFahrenheitValue, stationBeaufortValue);
+        render("station.html", station);
     }
 
     /**

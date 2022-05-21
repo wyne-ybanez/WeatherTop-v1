@@ -1,6 +1,7 @@
 package utils;
 
 import models.Reading;
+import models.Station;
 
 import java.util.List;
 
@@ -133,5 +134,24 @@ public class StationAnalytics {
             }
         }
         return maxPressureReading;
+    }
+
+    /**
+     * Process station analytics for latest reading.
+     *
+     * @param station
+     * @return max/min Temperature, max/min WindSpeed, max/min Pressure
+     */
+    public static void processAnalytics(Station station)
+    {
+        if (station.readings.size() > 0) {
+            // Analytics: Max & Min Values (Temperature, Wind, Pressure)
+            station.maxTemperature = getMaxTemperature(station.readings).temperature;
+            station.minTemperature = getMinTemperature(station.readings).temperature;
+            station.maxWindSpeed = getMaxWindSpeed(station.readings).windSpeed;
+            station.minWindSpeed = getMinWindSpeed(station.readings).windSpeed;
+            station.maxPressure = getMaxPressure(station.readings).pressure;
+            station.minPressure = getMinPressure(station.readings).pressure;
+        }
     }
 }

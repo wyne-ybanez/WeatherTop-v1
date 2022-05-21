@@ -1,5 +1,7 @@
 package utils;
 
+import models.Reading;
+import models.Station;
 import play.Logger;
 
 import java.lang.Math;
@@ -211,5 +213,29 @@ public class Conversions {
         double windChillValue = 13.12 + (0.6215 * temperature) - (11.37 * Math.pow(windSpeed, exponent)) + 0.3965 * (temperature) * (Math.pow(windSpeed, exponent));
         double windChillValueRounded = (Math.round(windChillValue * 100.0) / 100.0);
         return windChillValueRounded;
+    }
+
+    /**
+     *  Process all conversions regarding Station's latest reading.
+     *
+     *  @return Conversions of latest reading.
+     */
+    public static void processConversions(Station station){
+        // Initiate latestReadings
+        Reading latestReading;
+
+        if (station.readings.size() > 0) {
+            // Get the latest reading
+            latestReading = station.readings.get(station.readings.size() - 1);
+
+            // Station Conversions
+            station.latestWeather = convertCodeToWeather(latestReading.code);
+            station.temperature = latestReading.temperature;
+            station.wind = convertToBeaufort(latestReading.windSpeed);
+            station.pressure = latestReading.pressure;
+            station.windCompass = convertToCompassDirection(latestReading.windDirection);
+            station.windChill = windChillCalculator(latestReading.windSpeed, latestReading.temperature);
+            station.fahrenheitTemp = convertToFahrenheit(latestReading.temperature);
+        }
     }
 }
