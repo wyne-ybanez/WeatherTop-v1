@@ -14,21 +14,21 @@ public class StationCtrl extends Controller
 {
     /**
      *  Find a station by ID and obtain the latest Readings.
-     *  Index contains the following:
+     *  Readings contain the following:
      *
      *  1. Weather Code conversion value displays in the view for each station.
-     *  2. Temperature Celcius to Fahrenheit conversion value.
+     *  2. Temperature Celcius and Fahrenheit conversion value.
      *  3. Wind Speed to Beaufort conversion value.
      *  4. Pressure as declared by latest reading.
      *  5. Wind compass direction.
      *  6. Wind chill.
      *  7. Max & Min values (Temp, Wind, Pressure).
+     *  8. Trends for rising or falling (Temp, Wind, Pressure)
      *
      * @param id
      * @return The index will pass variables to/and render the view.
      */
     public static void index(long id) {
-        Reading latestReading;
         Station station = Station.findById(id);
         processConversions(station);
         processAnalytics(station);
@@ -56,7 +56,7 @@ public class StationCtrl extends Controller
         Logger.info("Removing reading: " + readingid);
         station.save();
         reading.delete();
-        render("station.html", station);
+        redirect("/stations/" + id);
     }
 
     /**

@@ -129,9 +129,13 @@ public class Conversions {
             BeaufortLabel.put(BeaufortValue,"Violent Storm");
         }
         else {
-            BeaufortValue = 0;
-            System.out.println("Invalid code input.");
-            Logger.error("Invalid code input");
+            /*
+             Assuming that anything beyond 117km/hr is a violent storm,
+             hence the value defaults at 11 bft.
+             */
+            BeaufortValue = 11;
+            System.out.println("Invalid wind speed input.");
+            Logger.error("Invalid wind speed input.");
         }
     return BeaufortValue;
     }

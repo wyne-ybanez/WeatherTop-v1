@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import javax.persistence.Entity;
 
 import play.db.jpa.Model;
@@ -12,12 +13,23 @@ public class Reading extends Model
     public double windSpeed;
     public double windDirection;
     public int pressure;
+    public String date;
 
+    /**
+     * Constructor
+     *
+     * @param code
+     * @param temperature
+     * @param windSpeed
+     * @param windDirection
+     * @param pressure
+     */
     public Reading(int code, double temperature, double windSpeed, double windDirection, int pressure){
         this.code = code;
         this.temperature = temperature;
         this.windSpeed = windSpeed;
         this.windDirection = windDirection;
         this.pressure = pressure;
+        this.date = new SimpleDateFormat("yyyy-MM-dd " + "HH:mm:ss.sss").format(new java.util.Date());
     }
 }
