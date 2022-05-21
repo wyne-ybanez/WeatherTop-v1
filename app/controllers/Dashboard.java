@@ -3,7 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 import models.*;
-import org.apache.commons.lang.builder.StandardToStringStyle;
+
 import play.Logger;
 import play.mvc.Controller;
 
@@ -55,7 +55,7 @@ public class Dashboard extends Controller
    * Obtain both the member and the station.
    * Remove the station from the member's station list and delete it.
    *
-   * @param id
+   * @param id ID of the specified station
    */
   public static void deleteStation (long id)
   {
@@ -63,7 +63,12 @@ public class Dashboard extends Controller
     Station station = Station.findById(id);
     member.stations.remove(station);
     member.save();
-    station.delete();
+    try {
+      station.delete();
+    }
+    catch (Exception e){
+      System.err.println("Caught Exception: " + e);
+    }
     Logger.info ("Removing station");
     redirect ("/dashboard");
   }
