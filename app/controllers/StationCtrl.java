@@ -6,10 +6,9 @@ import models.Reading;
 import play.Logger;
 import play.mvc.Controller;
 
-import utils.Conversions;
-import utils.StationAnalytics;
 import static utils.Conversions.processConversions;
 import static utils.StationAnalytics.processAnalytics;
+import static utils.StationAnalytics.processTrendAnalytics;
 
 public class StationCtrl extends Controller
 {
@@ -33,6 +32,7 @@ public class StationCtrl extends Controller
         Station station = Station.findById(id);
         processConversions(station);
         processAnalytics(station);
+        processTrendAnalytics(station);
 
         Logger.info("Weather Station Id = " + id
                 + "\n\n Max temp value: " + station.maxTemperature

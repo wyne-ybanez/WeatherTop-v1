@@ -9,100 +9,127 @@
     </h2>
     <table>
         <tbody>
-            <!--  Latest Data  -->
-            <div class="ui five column grid">
+        <!--  Trends and Latest Data  -->
+        <div class="ui five column grid">
 
-                <div class="column">
-                    <div class="ui fluid inverted card">
-                        <div class="middle aligned content station-card-height">
-                          <h3 class="ui header top-medium-padding">
+            <div id="station" class="column">
+                <div class="ui fluid inverted card">
+                    <div class="middle aligned content station-card-height">
+                        <h3 class="ui header top-medium-padding">
                             ${station.stationName}
-                              <i class="marker icon"></i>
-                          </h3>
-                          <p class="description">
+                            <i class="marker icon"></i>
+                        </h3>
+                        <p class="description">
                             Lat: ${station.latitude}
                             <br>
                             Lng: ${station.longitude}
-                          </p>
-                        </div>
+                        </p>
                     </div>
                 </div>
-
-                <div class="column">
-                    <div class="ui fluid inverted card">
-                        <div class="middle aligned content station-card-height">
-                          <h3 class="ui header top-medium-padding">
-                            Weather
-                              <i class="cloud rain icon"></i>
-                          </h3>
-                          <p class="description">
-                            ${station.latestWeather}
-                          </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="ui fluid inverted card">
-                        <div class="middle aligned content station-card-height">
-                          <h3 class="ui header top-medium-padding">
-                            Temp
-                              <i class="temperature low icon"></i>
-                          </h3>
-                            <p class="description">
-                                ${station.temperature} °C
-                                <br>
-                                ${station.fahrenheitTemp} F
-                                <br>
-                                Max: ${station.maxTemperature}
-                                <br>
-                                Min: ${station.minTemperature}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="ui fluid inverted card">
-                        <div class="middle aligned content station-card-height">
-                          <h3 class="ui header top-medium-padding">
-                            Wind
-                              <i class="wind icon"></i>
-                          </h3>
-                          <p class="description">
-                              ${station.wind} bft
-                              <br>
-                              ${station.windCompass}
-                              <br>
-                              Feels like ${station.windChill}
-                              <br>
-                              Max: ${station.maxWindSpeed}
-                              <br>
-                              Min: ${station.minWindSpeed}
-                          </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column">
-                    <div class="ui fluid inverted card">
-                        <div class="middle aligned content station-card-height">
-                          <h3 class="ui header top-medium-padding">
-                            Pressure
-                              <i class="cloud sun icon"></i>
-                          </h3>
-                          <p class="description">
-                            ${station.pressure} hpa
-                              <br>
-                              Max: ${station.maxPressure}
-                              <br>
-                              Min: ${station.minPressure}
-                          </p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <div id="weather" class="column">
+                <div class="ui fluid inverted card">
+                    <div class="middle aligned content station-card-height">
+                        <h3 class="ui header top-medium-padding">
+                            Weather
+                            <i class="cloud rain icon"></i>
+                        </h3>
+                        <p class="description">
+                            ${station.latestWeather}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="temperature" class="column">
+                <div class="ui fluid inverted card">
+                    <div class="middle aligned content station-card-height">
+                        <h3 class="ui header top-medium-padding">
+                            Temp
+                            <i class="temperature low icon"></i>
+                        </h3>
+                        <p class="description">
+                            ${station.temperature} °C
+                            <br>
+                            ${station.fahrenheitTemp} F
+                            <br>
+                            Max: ${station.maxTemperature}
+                            <br>
+                            Min: ${station.minTemperature}
+                        </p>
+                        <!--  Temperature Trends  -->
+                        #{if (station.tempTrend)}
+                        <i class="right floated arrow up icon"></i>
+                        #{/if}
+                        #{elseif (station.tempTrend == false)}
+                        <i class="right floated arrow down icon"></i>
+                        #{/elseif}
+                        #{else}
+                        #{/else}
+                    </div>
+                </div>
+            </div>
+
+            <div id="wind" class="column">
+                <div class="ui fluid inverted card">
+                    <div class="middle aligned content station-card-height">
+                        <h3 class="ui header top-medium-padding">
+                            Wind
+                            <i class="wind icon"></i>
+                        </h3>
+                        <p class="description">
+                            ${station.wind} bft
+                            <br>
+                            ${station.windCompass}
+                            <br>
+                            Feels like ${station.windChill}
+                            <br>
+                            Max: ${station.maxWindSpeed}
+                            <br>
+                            Min: ${station.minWindSpeed}
+                        </p>
+                        <!--  Wind Trends  -->
+                        #{if (station.windTrend)}
+                        <i class="right floated arrow up icon"></i>
+                        #{/if}
+                        #{elseif (station.windTrend == false)}
+                        <i class="right floated arrow down icon"></i>
+                        #{/elseif}
+                        #{else}
+                        #{/else}
+                    </div>
+                </div>
+            </div>
+
+            <div id="pressure" class="column">
+                <div class="ui fluid inverted card">
+                    <div class="middle aligned content station-card-height">
+                        <h3 class="ui header top-medium-padding">
+                            Pressure
+                            <i class="cloud sun icon"></i>
+                        </h3>
+                        <p class="description">
+                            ${station.pressure} hpa
+                            <br>
+                            Max: ${station.maxPressure}
+                            <br>
+                            Min: ${station.minPressure}
+                        </p>
+                        <!--  Pressure Trends  -->
+                        #{if (station.pressureTrend)}
+                        <i class="right floated arrow up icon"></i>
+                        #{/if}
+                        #{elseif (station.pressureTrend == false)}
+                        <i class="right floated arrow down icon"></i>
+                        #{/elseif}
+                        #{else}
+                        #{/else}
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
             <!-- Displays readings for each station -->
             #{listreadings station:station/}

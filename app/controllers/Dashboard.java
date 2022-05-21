@@ -3,11 +3,13 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 import models.*;
+import org.apache.commons.lang.builder.StandardToStringStyle;
 import play.Logger;
 import play.mvc.Controller;
 
 import static utils.Conversions.processConversions;
 import static utils.StationAnalytics.processAnalytics;
+import static utils.StationAnalytics.processTrendAnalytics;
 
 public class Dashboard extends Controller
 {
@@ -20,6 +22,7 @@ public class Dashboard extends Controller
     for(Station station:stations) {
       processConversions(station);
       processAnalytics(station);
+      processTrendAnalytics(station);
     }
     render ("dashboard.html", stations, member);
   }

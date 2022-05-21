@@ -33,28 +33,51 @@
 
 .ui.header>i.icon {
     font-size: 4rem;
-    color: blueviolet;
     position: absolute;
     right: 1rem;
     top: 1.5rem;
 }
 
-.ui.header>i.icon.cloud.rain {
+i.icon.arrow.up,
+i.icon.arrow.down {
+    font-size: 2rem;
+    position: absolute;
+    bottom: 4rem;
+    right: 2rem;
+}
+
+/* Latest reading icon colors */
+#station i.icon,
+#station i.icon.arrow.up,
+#station i.icon.arrow.down {
+    color: blueviolet;
+}
+
+#weather i.icon.cloud.rain,
+#weather i.icon.arrow.up,
+#weather i.icon.arrow.down {
     color: red !important;
 }
 
-.ui.header>i.icon.temperature.low {
+#temperature i.icon.temperature.low,
+#temperature i.icon.arrow.up,
+#temperature i.icon.arrow.down {
     color: dodgerblue !important;
 }
 
-.ui.header>i.icon.wind {
+#wind i.icon.wind,
+#wind i.icon.arrow.up,
+#wind i.icon.arrow.down {
     color: forestgreen !important;
 }
 
-.ui.header>i.icon.cloud.sun {
+#pressure i.icon.cloud.sun,
+#pressure i.icon.arrow.up,
+#pressure i.icon.arrow.down {
     color: orange !important;
 }
 
+/* Card style changes */
 .ui.inverted.card, .ui.inverted.cards>.card {
     margin-bottom: 1.5rem;
 }

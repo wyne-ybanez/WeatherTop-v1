@@ -136,6 +136,76 @@ public class StationAnalytics {
         return maxPressureReading;
     }
 
+    //=== Trends
+
+    /**
+     * Checks if latest figure for temp is rising or falling.
+     *
+     * @param readings
+     * @return boolean value for tempRising, which is either true or false.
+     */
+    public static boolean temperatureTrend(List<Reading> readings){
+        Reading latestTempReading = null;
+        Boolean tempRising = false;
+
+        // Ensures code only works if there is more than 1 reading.
+        if (readings.size() > 1) {
+            latestTempReading = readings.get( readings.size() - 1 ); // Get latest reading
+            for (Reading reading : readings) {
+                if (latestTempReading.temperature > reading.temperature) {
+                    tempRising = true;
+                }
+            }
+        }
+        return tempRising;
+    }
+
+    /**
+     * Checks if latest figure for wind is rising or falling.
+     *
+     * @param readings
+     * @return boolean value for windRising, which is either true or false.
+     */
+    public static boolean windTrend(List<Reading> readings){
+        Reading latestTempReading = null;
+        Boolean windRising = false;
+
+        // Ensures code only works if there is more than 1 reading.
+        if (readings.size() > 1) {
+            latestTempReading = readings.get( readings.size() - 1 ); // Get latest reading
+            for (Reading reading : readings) {
+                if (latestTempReading.windSpeed > reading.windSpeed) {
+                    windRising = true;
+                }
+            }
+        }
+        return windRising;
+    }
+
+    /**
+     * Checks if latest figure for pressure is rising or falling.
+     *
+     * @param readings
+     * @return boolean value for pressureRising, which is either true or false.
+     */
+    public static boolean pressureTrend(List<Reading> readings){
+        Reading latestTempReading = null;
+        Boolean pressureRising = false;
+
+        // Ensures code only works if there is more than 1 reading.
+        if (readings.size() > 1) {
+            latestTempReading = readings.get( readings.size() - 1 ); // Get latest reading
+            for (Reading reading : readings) {
+                if (latestTempReading.windSpeed > reading.windSpeed) {
+                    pressureRising = true;
+                }
+            }
+        }
+        return pressureRising;
+    }
+
+    //=== Process Analytics
+
     /**
      * Process station analytics for latest reading.
      *
@@ -152,6 +222,21 @@ public class StationAnalytics {
             station.minWindSpeed = getMinWindSpeed(station.readings).windSpeed;
             station.maxPressure = getMaxPressure(station.readings).pressure;
             station.minPressure = getMinPressure(station.readings).pressure;
+        }
+    }
+
+    /**
+     * Process Trend analytics for Wind, Temp and Pressure.
+     *
+     * @param station
+     * @return Boolean values depending if each trend is rising or falling.
+     */
+    public static void processTrendAnalytics(Station station)
+    {
+        if (station.readings.size() > 1) {
+            station.tempTrend = temperatureTrend(station.readings);
+            station.windTrend = windTrend(station.readings);
+            station.pressureTrend = pressureTrend(station.readings);
         }
     }
 }

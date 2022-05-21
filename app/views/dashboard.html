@@ -19,7 +19,7 @@
       <!--  Trends and Latest Data  -->
       <div class="ui five column grid">
 
-        <div class="column">
+        <div id="station" class="column">
           <div class="ui fluid inverted card">
             <div class="middle aligned content station-card-height">
               <h3 class="ui header top-medium-padding">
@@ -35,7 +35,7 @@
           </div>
         </div>
 
-        <div class="column">
+        <div id="weather" class="column">
           <div class="ui fluid inverted card">
             <div class="middle aligned content station-card-height">
               <h3 class="ui header top-medium-padding">
@@ -49,7 +49,7 @@
           </div>
         </div>
 
-        <div class="column">
+        <div id="temperature" class="column">
           <div class="ui fluid inverted card">
             <div class="middle aligned content station-card-height">
               <h3 class="ui header top-medium-padding">
@@ -65,11 +65,20 @@
                 <br>
                 Min: ${station.minTemperature}
               </p>
+              <!--  Temperature Trends  -->
+              #{if (station.tempTrend)}
+              <i class="right floated arrow up icon"></i>
+              #{/if}
+              #{elseif (station.tempTrend == false)}
+              <i class="right floated arrow down icon"></i>
+              #{/elseif}
+              #{else}
+              #{/else}
             </div>
           </div>
         </div>
 
-        <div class="column">
+        <div id="wind" class="column">
           <div class="ui fluid inverted card">
             <div class="middle aligned content station-card-height">
               <h3 class="ui header top-medium-padding">
@@ -87,11 +96,20 @@
                 <br>
                 Min: ${station.minWindSpeed}
               </p>
+              <!--  Wind Trends  -->
+              #{if (station.windTrend)}
+              <i class="right floated arrow up icon"></i>
+              #{/if}
+              #{elseif (station.windTrend == false)}
+              <i class="right floated arrow down icon"></i>
+              #{/elseif}
+              #{else}
+              #{/else}
             </div>
           </div>
         </div>
 
-        <div class="column">
+        <div id="pressure" class="column">
           <div class="ui fluid inverted card">
             <div class="middle aligned content station-card-height">
               <h3 class="ui header top-medium-padding">
@@ -105,6 +123,15 @@
                 <br>
                 Min: ${station.minPressure}
               </p>
+              <!--  Pressure Trends  -->
+              #{if (station.pressureTrend)}
+              <i class="right floated arrow up icon"></i>
+              #{/if}
+              #{elseif (station.pressureTrend == false)}
+              <i class="right floated arrow down icon"></i>
+              #{/elseif}
+              #{else}
+              #{/else}
             </div>
           </div>
         </div>
@@ -120,7 +147,7 @@
         <i class="icon trash"></i>
       </a>
     </div>
-    #{/list}
+  #{/list}
 
     <!-- Add a station form -->
     #{addstation/}

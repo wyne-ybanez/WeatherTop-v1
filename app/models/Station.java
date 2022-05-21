@@ -35,6 +35,11 @@ public class Station extends Model {
     public double maxWindSpeed;
     public int maxPressure;
 
+    // Trend
+    public Boolean tempTrend;
+    public Boolean windTrend;
+    public Boolean pressureTrend;
+
     /**
      * Constructor
      * @param stationName
