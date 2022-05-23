@@ -1,6 +1,6 @@
 # WeatherTop
 
-View the live project here: 
+View the live project here: https://rocky-wildwood-27122.herokuapp.com/
 
 ## Project Goal
 
