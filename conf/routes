@@ -9,11 +9,13 @@ GET     /                                         Start.index
 GET     /admin                                    Admin.index
 
 # Accounts
+GET     /account                                  Accounts.account
 GET     /signup                                   Accounts.signup
 GET     /login                                    Accounts.login
 GET     /logout                                   Accounts.logout
 POST    /register                                 Accounts.register
 POST    /authenticate                             Accounts.authenticate
+POST    /edit                                     Accounts.updateDetails
 
 # Dashboard
 GET     /about                                    About.index
