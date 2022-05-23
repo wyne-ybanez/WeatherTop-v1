@@ -196,7 +196,7 @@ public class StationAnalytics {
         if (readings.size() > 1) {
             latestTempReading = readings.get( readings.size() - 1 ); // Get latest reading
             for (Reading reading : readings) {
-                if (latestTempReading.windSpeed > reading.windSpeed) {
+                if (latestTempReading.pressure > reading.pressure) {
                     pressureRising = true;
                 }
             }

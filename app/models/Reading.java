@@ -14,7 +14,7 @@ public class Reading extends Model
     public double windSpeed;
     public double windDirection;
     public int pressure;
-    public String date;
+    public Date date;
 
     /**
      * Constructor
@@ -31,6 +31,6 @@ public class Reading extends Model
         this.windSpeed = windSpeed;
         this.windDirection = windDirection;
         this.pressure = pressure;
-        this.date = new SimpleDateFormat("yyyy-MM-dd " + "HH:mm:ss.sss").format(new Date());
+        this.date = new Date();
     }
 }
