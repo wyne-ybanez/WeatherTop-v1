@@ -1,76 +1,83 @@
 # WeatherTop
 
+WeatherTop is a web application where members can submit weather reports from their stations to
+the website where their entries are recorded, capturing the reading from a specific time. Each
+member can create any number of weather stations records. The web application utilises weather 
+analytics and conversions for each reading which is automatically calculated when a report is made.
+
 View the live project here: https://rocky-wildwood-27122.herokuapp.com/
 
 ## Project Goal
 
-...
+The goal of the project is to create a web app that incorporates the principles of CRUD and designed
+according to the MVC pattern. The project will achieve this by allowing users to create accounts, 
+stations, weather reports and either edit or delete these as the user pleases. The web app provides 
+only a very specific function by recording weather reports and providing a date/time recording of 
+these reports. Thus, each recording will not be edited, however, user information can be edited by 
+the user.
 
 ## UX
 
 ### Strategy
 
-...
+- The user would like to record weather reports on the web app. The application must portray that it
+functions to serve this exact purpose from the get go. The application will be simple in design and
+will have a logical, almost natural flow where a page will have necessary and useful links and forms
+to help the user begin recording reports.
 
 ### Scope
 
-...
+Features planned:
+
+- Website Title and purpose immediately communicated.
+- Navigation Menu.
+- ElephantSQL database to store records and users profiles.
+- Login functionality.
+- Logout functionality.
+- CRUD functionality for records and profiles.
+- Registered user station creation and management.
+- Admin dashboard for reviewing data.
 
 ### Structure
 
-...
+The following main pages will be implemented:
+
+- Base Page - main.html
+
+- Sign Up Page - signup.html
+
+- Log In Page - login.html
+
+- About page, explains the web app and its purpose - about.html
+
+- Home page, displays what the app is about - start.html
+  - Menu should the user have logged in - menu.html
+  - Menu if there is no user session ID - welcomemenu.html
+
+- Dashboard, displays user records (Stations), allows users to add stations and delete stations - dashboard.html
+  - Create station - addstation.html
+
+- Station details - station.html
+  - Displays a list of the readings relating to the station - listreadings.html
+  - Create a report and record it in the station's readings list - addreading.html
+
+- Account details Page - accounts.html
+  - Edit account details page - editaccount.html
+  
+- Admin Dashboard - admin.html
+
+- Error Handlers
+  - Error 404 - 404.html (error 404 handling)
+  - Error 500 - 500.html (error 500 handling)
+
 
 ### Skeleton
 
-...
-
-[Hero Image]()
-
-[About me]()
-
-[Timeline]()
-
-[Sticky Navbar]()
-
-[Contact Me form]()
-
-[Projects]()
-
-[Footer]()
+Display images of web app here...
 
 ### Surface
 
-...
-
-## User Stories:
-
-- ### First Time Visitor Goals:
-
-  a. I would like to know the purpose for the creation of the website from the first instance of opening it.
-  <br>
-  b. I would greatly appreciate it if the website were easy to navigate.
-  <br>
-  c. I expect the website to display relevant content and stay consistently relevant as I explore the site.
-  <br>
-  d. I would appreciate it if my interactions with the site were acknowledged so that I know what I am doing and where I am going.
-  <br>
-  e. I would like the content to be structured and easy to follow.
-
-- ### Returning Visitor Goals:
-
-  a. ...
-  <br>
-  b. ...
-  <br>
-  c. ...
-
-- ### Frequent Visitor Goals:
-
-  a. ...
-  <br>
-  b. ...
-  <br>
-  c. ...
+Color scheme and website design plan, fomantic ui...
 
 ## Design - In Depth
 
@@ -87,25 +94,13 @@ View the live project here: https://rocky-wildwood-27122.herokuapp.com/
 
 - ...
 
-### Opening the website:
-
-- ...
-
-![Screenshot]()
-
-### Footer:
-
-- ...
-
-![Screenshot]()
-
 ## Features
 
-### Responsive:
+### Simple Design:
 
 ...
 
-### Interactive:
+### Efficiency:
 
 ...
 
@@ -115,28 +110,49 @@ View the live project here: https://rocky-wildwood-27122.herokuapp.com/
 
 ## Testing
 
-I have added the testing onto a separate .md file as its content has increased exponentially, here is the [link]()
+... 
 
 ## Technologies used:
 
 ### Languages
--  [HTML5](https://en.wikipedia.org/wiki/HTML5)
--  [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
--  [SASS](https://sass-lang.com/)
--  [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+- [Java](https://www.java.com/en/download/help/whatis_java.html)
 
 ### IDE
-- [VScode:](https://code.visualstudio.com/) - The IDE used to code the website.
-- VSCode extension: [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+- [IntelliJ idea](https://www.jetbrains.com/idea/) - The IDE used to code the website.
 
 ### Frameworks, Libraries, CDN's, Resources etc.
-1. ...
+- [Play Framework](https://www.playframework.com/)
+- [Fomantic UI](https://fomantic-ui.com/)
 
-## Deployment
+## Version Control
 
-### Github
+### Github & Sourcetree
 
-1. ...
+1. Log into Github/Register for a Github account. Here is a link: https://github.com/
+2. Log into Bitbucket/Register for a Bitbucket account: https://bitbucket.org/
+3. Install Sourcetree: https://www.sourcetreeapp.com/
+4. In the Sourcetree settings, select Authentication and add a Github account (if you already have 
+a Github account set up, it might be simpler to use your personal access token).
+5. Go to your github profile settings and click on "Developer settings" at the side menu.
+6. Go to Personal Access Tokens, Press generate token.
+7. The token can be set to unlimited (which is not recommended). Perhaps select 90 days. Give the 
+token a name and press the Generate token button. You will then see the generated token and be able 
+to copy it to the clipboard.
+8. Back in Sourcetree, click 'Refresh Password'.
+9. Here you will be pasting in the token generated on the Github site (in your clipboard hopefully).
+Press Ok.
+10. Create a new repository on Github.
+11. Back in Sourcetree, press the local button.
+12. Create a repository with the local project folder on your device.
+13. You can now 'stage' all of the sources in the project by pressing the 'Stage All' button.
+14. You can enter a commit message down below the Sourcetree app, which is your commit message.
+15. Select master on the left, update the repository with the commit message.
+16. In Sourcetree, select Repository-Repository Settings, Press add, and enter the remote name: 'origin', the URL path
+is the repository path we have created.
+17. Back in the main Sourcetree window, press 'Push'. Thus, sending your files to the github remote
+repository.
 
 ### Forking the Repository
 
@@ -155,10 +171,25 @@ This is used when you would like to make changes to the project code
 3. Type `git clone`, and then paste the URL you copied
 
 ```
-$ git clone https://github.com/wyne-ybanez/personal-portfolio-master
+$ git clone https://github.com/wyne-ybanez/weather-top
 ```
 
 Here is a link that can explain this process further. [Click Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop)
+
+
+## Deployment
+
+1. For deployment we will be using 2 external services: 
+   - https://www.heroku.com
+   - https://www.elephantsql.com
+
+2. Sign up for Heroku and once confirmed on heroku, log in and go you your Dashboard: https://dashboard.heroku.com/apps
+
+3. On ElephanSQL, once you have authorised/signed in with GitHub, you will be asked to create a team:
+   - https://www.elephantsql.com
+
+
+
 
 ## Credits
 
