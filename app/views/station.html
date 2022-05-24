@@ -33,7 +33,35 @@
                     <div class="middle aligned content station-card-height">
                         <h3 class="ui header top-medium-padding">
                             Weather
-                            <i class="cloud rain icon"></i>
+                            #{if (station.latestWeather)}
+                                #{if (station.latestWeather == 'Clear')}
+                                    <i class="cloud rainbow icon"></i>
+                                #{/if}
+                                #{if (station.latestWeather == 'Partial clouds')}
+                                    <i class="cloud sun icon"></i>
+                                #{/if}
+                                #{if (station.latestWeather == 'Cloudy')}
+                                    <i class="cloud icon"></i>
+                                #{/if}
+                                #{if (station.latestWeather == 'Light Showers')}
+                                    <i class="cloud sun rain icon"></i>
+                                #{/if}
+                                #{if (station.latestWeather == 'Heavy Showers')}
+                                    <i class="cloud showers heavy icon"></i>
+                                #{/if}
+                                #{if (station.latestWeather == 'Heavy Showers')}
+                                    <i class="cloud showers heavy icon"></i>
+                                #{/if}
+                                #{if (station.latestWeather == 'Rain')}
+                                    <i class="cloud rain icon"></i>
+                                #{/if}
+                                #{if (station.latestWeather == 'Snow')}
+                                    <i class="snowflake icon"></i>
+                                #{/if}
+                                #{if (station.latestWeather == 'Thunder')}
+                                    <i class="poo storm icon"></i>
+                                #{/if}
+                            #{/if}
                         </h3>
                         <p class="description">
                             ${station.latestWeather}

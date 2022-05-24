@@ -87,7 +87,7 @@ i.icon.arrow.down {
     color: blueviolet;
 }
 
-#weather i.icon.cloud.rain,
+#weather i.icon,
 #weather i.icon.arrow.up,
 #weather i.icon.arrow.down {
     color: red !important;
