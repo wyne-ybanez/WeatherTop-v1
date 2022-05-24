@@ -37,6 +37,14 @@ body {
     padding-bottom: 2.5rem !important;
 }
 
+.bottom-medium-margin {
+    margin-bottom: 2.5rem !important;
+}
+
+.bottom-small-margin {
+    margin-bottom: 1rem !important;
+}
+
 .station-card-height {
     min-height: 14.5rem;
     max-height: 14.5rem;
@@ -49,12 +57,27 @@ body {
     top: 1.5rem;
 }
 
+.ui.cards {
+    display: flex;
+    justify-content: center;
+}
+
+i.icon.blue {
+    width: 300px;
+    font-size: 3rem;
+    margin: 1.5rem 0;
+}
+
 i.icon.arrow.up,
 i.icon.arrow.down {
     font-size: 2rem;
     position: absolute;
     bottom: 4rem;
     right: 2rem;
+}
+
+.about {
+    text-align: center;
 }
 
 /* Latest reading icon colors */

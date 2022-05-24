@@ -199,7 +199,11 @@ Here is a link that can explain this process further. [Click Here](https://help.
 
 ### Content
 
-- ...
+Content for the About page was taken from these websites
+
+- https://en.wikipedia.org/wiki/AccuWeather
+- https://www.acurite.com/gdpr
+- https://www.weatherstationadvisor.com/
 
 ### Media
 
