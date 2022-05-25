@@ -20,7 +20,7 @@ the user.
 
 ### Strategy
 
-- The user would like to record weather reports on the web app. The application must portray that it
+The user would like to record weather reports on the web app. The application must portray that it
 functions to serve this exact purpose from the get go. The application will be simple in design and
 will have a logical, almost natural flow where a page will have necessary and useful links and forms
 to help the user begin recording reports.
@@ -69,11 +69,29 @@ The following main pages will be implemented:
 - Error Handlers
   - Error 404 - 404.html (error 404 handling)
   - Error 500 - 500.html (error 500 handling)
-
-
+  
 ### Skeleton
 
-Display images of web app here...
+- Start Page: <br>
+  ![Start](public/readMeImages/weathertop-start.png)
+
+- Register: <br>
+  ![Register](public/readMeImages/weathertop-signup.png)
+
+- Log In: <br>
+  ![LogIn](public/readMeImages/weathertop-login.png)
+
+- Profile: <br>
+  ![Account](public/readMeImages/weathertop-account.png)
+
+- Dashboard: <br>
+  ![Dashboard](public/readMeImages/weathertop-dashboard.png)
+
+- About: <br>
+  ![About](public/readMeImages/weathertop-about.png)
+
+- Station: <br>
+  ![Station](public/readMeImages/weathertop-station.png)
 
 ### Surface
 
@@ -133,7 +151,8 @@ stations. This data is then recorded on ElephantSQL and is identified according 
 ## Testing
 
 The web app has been tested by creating a test account and inputting a test station and test reading.
-This data has been successfully saved and this is reflected on 'admin.html' or at 'localhost:9000/@db'.
+This data has been successfully saved and this is reflected on 'admin.html' or at 'localhost:9000/@db'
+when viewing the site during development.
 
 ## Technologies used:
 
@@ -169,7 +188,7 @@ Press Ok.
 10. Create a new repository on Github.
 11. Back in Sourcetree, press the local button.
 12. Create a repository with the local project folder on your device.
-13. You can now 'stage' all of the sources in the project by pressing the 'Stage All' button.
+13. You can now 'stage' all the sources in the project by pressing the 'Stage All' button.
 14. You can enter a commit message down below the Sourcetree app, which is your commit message.
 15. Select master on the left, update the repository with the commit message.
 16. In Sourcetree, select Repository-Repository Settings, Press add, and enter the remote name: 'origin', the URL path
@@ -198,7 +217,6 @@ $ git clone https://github.com/wyne-ybanez/weather-top
 ```
 
 Here is a link that can explain this process further. [Click Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop)
-
 
 ## Deployment
 
