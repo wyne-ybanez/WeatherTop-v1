@@ -77,40 +77,63 @@ Display images of web app here...
 
 ### Surface
 
-Color scheme and website design plan, fomantic ui...
+#### Frameworks
 
-## Design - In Depth
+- Main template frameworks used
+    * Fomantic UI (https://fomantic-ui.com/)
+    * Play Framework (https://www.playframework.com/documentation/1.5.x/install)
 
-### Colour Scheme
+#### Colour Scheme
 
-- ...
-    * #...
-    * #...
-    * #...
+- Main Colors
+    * White
+    * Fomantic Blue 
+    * Fomantic Red (for 'delete' buttons)
 
-- ...
+- Secondary Colors, used for icons
+    * blueviolet
+    * red
+    * dodgerblue
+    * forestgreen
+    * orange
 
-### Fonts
+#### Fonts
 
-- ...
+- Montserrat is the main font-family for the website
+- Sans-serif if the backup font-family for the website
 
 ## Features
 
 ### Simple Design:
 
-...
+The web app incorporates a simple design which is easy to understand and traverse as the user
+explores the website. 
+
+The website is also responsive for mobile display.
+
+Each page provides a menu, links and forms to relevant areas of the web app. The colors are simple
+with white and blue being the main colors. The site maintains this theme on all pages only 
+diverging from this color scheme when going to the dashboard. This is meant to allow the user to 
+distinguish between differing station information, usually through icons. This portrays an 
+easy to understand, easy to use application.
 
 ### Efficiency:
 
-...
+The web app incorporates a utilities folder with the follow files: 'Conversions' and 'StationAnalytics'.
+This utilities folder is utilised in the web app for automatic calculations. The user's readings
+will be converted to its relevant data as per the user's input. Hence, it is an efficient system 
+as the user will not need to do this from scratch.
 
 ### Convenience:
 
-...
+The web app also incorporates a database and is deployed through Heroku. Hence, many users can access
+the site, create accounts and begin recording their own weather readings through their respective 
+stations. This data is then recorded on ElephantSQL and is identified according to the user's member_id.
 
 ## Testing
 
-... 
+The web app has been tested by creating a test account and inputting a test station and test reading.
+This data has been successfully saved and this is reflected on 'admin.html' or at 'localhost:9000/@db'.
 
 ## Technologies used:
 
@@ -187,15 +210,26 @@ Here is a link that can explain this process further. [Click Here](https://help.
 
 3. On ElephanSQL, once you have authorised/signed in with GitHub, you will be asked to create a team:
    - https://www.elephantsql.com
+   Create a Database Instance. Copy the Database connection string.
+   
+4. Test the local application connected to the Elephant SQL.
+   - in `app/conf/application.conf` change `db.default=mem` to your ElephantSQL connection string.
+   - add `jpa.dialect=org.hibernate.dialect.PostgreSQLDialect` and `jpa.ddl=update`
+   - save and restart the application
 
+5. Prepare the local application for Heroku deployment.
+   - In the project root, place this file: `java.runtime.version=11` 
+   - Edit the existing file 'conf/dependencies.yml'. Add `require: - play 1.5.3`
+   - Ensure the application.conf file has `prod.application.mode=prod`
+   - Push the changes to Github
 
-
+6. Deploy Application to Heroku
+   - From the command line, Login to Heroku `heroku login`
+   - Use the buildpack: `heroku create --stack heroku-18 --buildpack https://github.com/heroku/heroku-buildpack-play`
+   - Deploy the project on the heroku dashboard by linking the project to the github repo.
+   - You can also push the changes to heroku by typing `git push heroku main` in the terminal.
 
 ## Credits
-
-### Code
-
-- ...
 
 ### Content
 
@@ -207,32 +241,23 @@ Content for the About page was taken from these websites
 
 ### Media
 
-- Image for Banner Section obtained from [Wherever](...)
-
-## Known Bugs
-
-- ...
-
-## Design Changes
-
-- ...
-
-## Future Implementations
-
-- ...
-
-## Acknowledgements
-
-- ...
-
-
-## Citations:
-- Solution for finding the last item in an array list:
-  - https://stackoverflow.com/questions/687833/how-to-get-the-last-value-of-an-arraylist#:~:text=The%20size()%20method%20returns,to%20retrieve%20the%20last%20element.
-    
-- Solution for DateTime feature:
-  - https://stackoverflow.com/questions/23068676/how-to-get-current-timestamp-in-string-format-in-java-yyyy-mm-dd-hh-mm-ss/23068721#23068721
+- Images for start.html banner, login.html banner and signup.html banner derived from Google.
 
 - Images:
   - Login Page image: https://www.decolore.net/weather-forecast-icon-sets/
   - Registration page image: https://metro.co.uk/2018/02/26/iphone-weather-symbols-mean-7343734/
+
+## Future Implementations
+
+- I would like to sort the user's station list alphabetically.
+- I would like to add a footer for the webapp.
+- I would like to add toasts to the website to make it more user-friendly.
+
+## Acknowledgements
+
+- Thanks to the WIT lecturers and students on Slack for their guidance on this project.
+
+## Citations:
+- Solution for finding the last item in an array list:
+  - https://stackoverflow.com/questions/687833/how-to-get-the-last-value-of-an-arraylist#:~:text=The%20size()%20method%20returns,to%20retrieve%20the%20last%20element.
+

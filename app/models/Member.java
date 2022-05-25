@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member extends Model{
+public class Member extends Model {
     public String firstname;
     public String lastname;
     public String email;
@@ -18,6 +18,14 @@ public class Member extends Model{
     @OneToMany(cascade = CascadeType.ALL)
     public List<Station> stations = new ArrayList<Station>();
 
+    /**
+     * Constructor
+     *
+     * @param firstname
+     * @param lastname
+     * @param email
+     * @param password
+     */
     public Member(String firstname, String lastname, String email, String password)
     {
         this.firstname = firstname;
