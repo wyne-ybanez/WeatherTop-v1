@@ -1,11 +1,14 @@
 package controllers;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 import models.*;
 
 import play.Logger;
 import play.mvc.Controller;
 
+import static java.util.Comparator.comparing;
 import static utils.Conversions.processConversions;
 import static utils.StationAnalytics.processAnalytics;
 import static utils.StationAnalytics.processTrendAnalytics;
@@ -15,15 +18,25 @@ public class Dashboard extends Controller
   public static void index()
   {
     Logger.info("Rendering Dashboard");
+
+    // Get user
     Member member = Accounts.getLoggedInMember();
+
+    // Get user's stations
     List<Station> stations = member.stations;
 
-    for(Station station:stations) {
+    // Sort Stations in alphabetical order
+    List<Station> sortedStationList = stations.stream()
+            .sorted(comparing(Station::getStationName))
+            .collect(Collectors.toList());
+
+    // Initiate conversions and analytics for each station
+    for(Station station:sortedStationList) {
       processConversions(station);
       processAnalytics(station);
       processTrendAnalytics(station);
     }
-    render ("dashboard.html", stations, member);
+    render ("dashboard.html", sortedStationList, member);
   }
 
   /**

@@ -267,7 +267,8 @@ Content for the About page was taken from these websites
 
 ## Future Implementations
 
-- I would like to sort the user's station list alphabetically.
+- I would like to make the web app truly responsive, at the mean time, it is only responsive if the 
+screen size is minimized directly on the browser. It is not responsive to mobile phones.
 - I would like to add a footer for the webapp.
 - I would like to add toasts to the website to make it more user-friendly.
 
@@ -276,6 +277,9 @@ Content for the About page was taken from these websites
 - Thanks to the WIT lecturers and students on Slack for their guidance on this project.
 
 ## Citations:
-- Solution for finding the last item in an array list:
+
+- Finding the last item in an array list:
   - https://stackoverflow.com/questions/687833/how-to-get-the-last-value-of-an-arraylist#:~:text=The%20size()%20method%20returns,to%20retrieve%20the%20last%20element.
 
+- Sorting a List of Objects according to alphabetical order:
+  - https://mkyong.com/java8/java-8-how-to-sort-list-with-stream-sorted/
