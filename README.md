@@ -264,6 +264,7 @@ Content for the About page was taken from these websites
 - Images for start.html banner, login.html banner and signup.html banner derived from Google.
 
 - Images:
+  - Start Page image: https://365webresources.com/weather-icon-sets-shouldnt-miss/
   - Login Page image: https://www.decolore.net/weather-forecast-icon-sets/
   - Registration page image: https://metro.co.uk/2018/02/26/iphone-weather-symbols-mean-7343734/
 
